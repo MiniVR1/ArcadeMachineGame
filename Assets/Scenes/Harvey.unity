@@ -508,6 +508,8 @@ MonoBehaviour:
   MasterSlider: {fileID: 852972703}
   MusicSlider: {fileID: 1171174225}
   sfx_Slider: {fileID: 1272607074}
+  SoundPanel: {fileID: 572570634}
+  soundPageOpen: 0
 --- !u!1 &246318515
 GameObject:
   m_ObjectHideFlags: 0
@@ -1194,7 +1196,7 @@ GameObject:
   - component: {fileID: 572570637}
   - component: {fileID: 572570636}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: SoundPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
