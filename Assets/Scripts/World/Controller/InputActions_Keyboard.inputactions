@@ -1,0 +1,57 @@
+{
+    "version": 1,
+    "name": "InputActions_Keyboard",
+    "maps": [
+        {
+            "name": "Keyboard",
+            "id": "5f7cb632-ea7c-41d5-984e-15671ea34309",
+            "actions": [
+                {
+                    "name": "WASD",
+                    "type": "Value",
+                    "id": "db5d784c-667e-4bed-ba19-9a8344ba7521",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "1D Axis",
+                    "id": "89346854-c30e-4e4c-a37b-898c0bbe14ea",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WASD",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "1b7b0c5a-a5c2-4cde-8cbd-ab6d10bdebf6",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WASD",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "dfde8f80-e83e-4640-b355-0c73aa03e214",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WASD",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
