@@ -5,6 +5,8 @@ public class ArcadePlayer : MonoBehaviour
 {
     Rigidbody2D body;
 
+    public Camera camera; 
+
     [SerializeField] private float moveSpeed = 5.0f;
     [SerializeField] private float jumpHeight = 3.0f;
 
@@ -12,6 +14,9 @@ public class ArcadePlayer : MonoBehaviour
     [SerializeField] private Vector3 leftTilt = new Vector3(2.0f, -9.81f, 0f);
     [SerializeField] private Vector3 rightTilt = new Vector3(-2.0f, 0f, 0f);
     [SerializeField] private Vector3 noTilt = new Vector3(0f, 0f, 0f);
+    [SerializeField] private Vector3 leftCameraTilt = new Vector3(0f, 180f, -10f);
+    [SerializeField] private Vector3 rightCameraTilt = new Vector3(0f, 180f, 10f);
+    [SerializeField] private Vector3 defaultCameraTilt = new Vector3(0f, 180f, 0f);
     private Vector3 currentTilt;
     private Vector3 initialPosition;
 
@@ -35,13 +40,13 @@ public class ArcadePlayer : MonoBehaviour
     void Update()
     {
         direction = move.action.ReadValue<Vector2>();
+        Debug.Log(camera.transform.rotation);
     }
 
     private void FixedUpdate()
     {
         body.linearVelocityX = -direction.x * moveSpeed;
         body.AddForce(currentTilt);
-        Debug.Log(currentTilt);
     }
 
     private void OnEnable()
@@ -89,18 +94,20 @@ public class ArcadePlayer : MonoBehaviour
     {
         currentTilt = leftTilt;
         Debug.Log("Tilting Left");
+        camera.transform.rotation = Quaternion.Euler(leftCameraTilt);
     }
 
     private void RightTilt()
     {
         currentTilt = rightTilt;
         Debug.Log("Tilting Right");
+        camera.transform.rotation = Quaternion.Euler(rightCameraTilt);
     }
-
     private void DefaultTilt()
     {
         currentTilt = noTilt;
         Debug.Log("Tilting Reset");
+        camera.transform.rotation = Quaternion.Euler(defaultCameraTilt);
     }
 
     private void LeftTilt(InputAction.CallbackContext context)
