@@ -40,7 +40,6 @@ public class ArcadePlayer : MonoBehaviour
     void Update()
     {
         direction = move.action.ReadValue<Vector2>();
-        Debug.Log(camera.transform.rotation);
     }
 
     private void FixedUpdate()
@@ -77,14 +76,14 @@ public class ArcadePlayer : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Platform"))
+        if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Glitches"))
         {
             canJump = true;
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Platform"))
+        if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Glitches"))
         {
             canJump = false;
         }
