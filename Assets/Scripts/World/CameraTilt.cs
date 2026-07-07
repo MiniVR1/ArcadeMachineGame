@@ -1,13 +1,12 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class CameraTilt : MonoBehaviour
 {
+    [SerializeField] private float tiltSpeed = 4f;
+    [SerializeField] const float tilt_ang = 30.0f;
     const float EPS = 1e-3f;
-    const float TILT_ANG = 30.0f;
 
     private float tilt = 0.0f;
-    [SerializeField] private float tiltSpeed = 4f;
     private Quaternion from;
     private Quaternion to;
     private bool rotating = false;
@@ -19,6 +18,8 @@ public class CameraTilt : MonoBehaviour
     {
         from = transform.rotation;
         to = from;
+        HammerHit.instance.hammerHitLeft += HandleLeftHit;
+        HammerHit.instance.hammerHitRight += HandleRightHit;
     }
 
     // Update is called once per frame
@@ -36,20 +37,14 @@ public class CameraTilt : MonoBehaviour
         }
     }
 
-    public void OnWASD(InputValue value)
+    void HandleLeftHit(float hitStrength)
     {
-        if (rotating) return;
+        TiltRight();
+    }
 
-        float horizontal = value.Get<float>();
-
-        if (horizontal < 0)
-        {
-            TiltLeft();
-        }
-        else if (horizontal > 0)
-        {
-            TiltRight();
-        }
+    void HandleRightHit(float hitStrength)
+    {
+        TiltLeft();
     }
 
     private void StartRotation()
@@ -66,13 +61,13 @@ public class CameraTilt : MonoBehaviour
 
     public void TiltLeft()
     {
-        tilt = Mathf.Clamp(tilt - TILT_ANG, -TILT_ANG, TILT_ANG);
+        tilt = Mathf.Clamp(tilt - tilt_ang, -tilt_ang, tilt_ang);
         StartRotation();
     }
 
     public void TiltRight()
     {
-        tilt = Mathf.Clamp(tilt + TILT_ANG, -TILT_ANG, TILT_ANG);
+        tilt = Mathf.Clamp(tilt + tilt_ang, -tilt_ang, tilt_ang);
         StartRotation();
     }
 }

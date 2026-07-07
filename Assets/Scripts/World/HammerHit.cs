@@ -14,7 +14,7 @@ public class HammerHit : MonoBehaviour
     public HammerHasHit hammerHitLeft;
     public HammerHasHit hammerHitRight;
     public HammerHasHit hammerHitTop;
-    
+
     void Awake()
     {
         instance = this;
