@@ -59,6 +59,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "GlitchHit",
+                    "type": "Button",
+                    "id": "4348b15e-7a95-4c5a-a7d5-d9262e8b154b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -123,7 +132,7 @@
                     "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";ArcadeControls",
                     "action": "TiltRight",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -134,7 +143,7 @@
                     "path": "<Keyboard>/r",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";ArcadeControls",
                     "action": "TiltReset",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -145,8 +154,19 @@
                     "path": "<Keyboard>/f1",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";ArcadeControls",
                     "action": "Respawn",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ce67ea32-2346-46d2-8766-07a9d10d254e",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";ArcadeControls",
+                    "action": "GlitchHit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
