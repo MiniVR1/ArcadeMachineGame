@@ -3725,13 +3725,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305019394}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 4.75, y: -0.24, z: 0}
-  m_LocalScale: {x: 2, y: 0.5, z: 10}
+  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
+  m_LocalPosition: {x: 4.75, y: -0.23999998, z: 0}
+  m_LocalScale: {x: 0.5, y: 2, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1827383771}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
 --- !u!61 &1305019396
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4760,11 +4760,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5deb6bf0f04940eba5b6e3894730e00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArcadePlayer
+  camera: {fileID: 711481326}
   moveSpeed: 5
   jumpHeight: 4
   leftTilt: {x: 10, y: 0, z: 0}
   rightTilt: {x: -10, y: 0, z: 0}
   noTilt: {x: 0, y: 0, z: 0}
+  leftCameraTilt: {x: 0, y: 180, z: -30}
+  rightCameraTilt: {x: 0, y: 180, z: 30}
+  defaultCameraTilt: {x: 0, y: 180, z: 0}
   move: {fileID: -4574680043286130804, guid: 3b4b16ba8c9af48f198d1b930cb6694e, type: 3}
   jump: {fileID: 3874535947816775757, guid: 3b4b16ba8c9af48f198d1b930cb6694e, type: 3}
   tiltLeft: {fileID: 510522003452572228, guid: 3b4b16ba8c9af48f198d1b930cb6694e, type: 3}
