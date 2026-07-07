@@ -50,11 +50,11 @@ public class ArcadePlayer : MonoBehaviour
 
     private void OnEnable()
     {
-        // jump.action.started += Jump;
-        // tiltLeft.action.started += LeftTilt;
-        // tiltRight.action.started += RightTilt;
-        // tiltReset.action.started += TiltReset;
-        // respawn.action.started += Respawn;
+        jump.action.started += Jump;
+        tiltLeft.action.started += LeftTilt;
+        tiltRight.action.started += RightTilt;
+        tiltReset.action.started += TiltReset;
+        respawn.action.started += Respawn;
     }
 
     private void Jump(InputAction.CallbackContext context)
@@ -67,11 +67,11 @@ public class ArcadePlayer : MonoBehaviour
 
     private void OnDisable()
     {
-        // jump.action.started -= Jump;
-        // tiltLeft.action.started -= LeftTilt;
-        // tiltRight.action.started -= RightTilt;
-        // tiltReset.action.started -= TiltReset;
-        // respawn.action.started -= Respawn;
+        jump.action.started -= Jump;
+        tiltLeft.action.started -= LeftTilt;
+        tiltRight.action.started -= RightTilt;
+        tiltReset.action.started -= TiltReset;
+        respawn.action.started -= Respawn;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
