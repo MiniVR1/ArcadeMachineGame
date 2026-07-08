@@ -1,9 +1,9 @@
 {
     "version": 1,
-    "name": "InputActions_Sledgehammer",
+    "name": "InputActions_Item",
     "maps": [
         {
-            "name": "Sledgehammer",
+            "name": "Item",
             "id": "c0b226b5-4e77-4153-a187-a763c5c9f0bf",
             "actions": [
                 {
