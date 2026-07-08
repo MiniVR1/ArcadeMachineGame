@@ -68,6 +68,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "ef523456-301f-4e6b-a147-32e4b8efa898",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -77,7 +86,7 @@
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";ArcadeControls",
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -167,6 +176,28 @@
                     "processors": "",
                     "groups": ";ArcadeControls",
                     "action": "GlitchHit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5134fbe0-4619-4fd0-b31e-a08e3570d384",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";ArcadeControls",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b9e67a59-e26e-4f07-b23c-4cbcb65a5252",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";ArcadeControls",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
