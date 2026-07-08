@@ -23,12 +23,15 @@ public class ArcadePlayer : MonoBehaviour
     private Vector3 currentTilt;
     private Vector3 initialPosition;
 
+    private bool isPaused;
+
     public InputActionReference move;
     public InputActionReference jump;
     public InputActionReference tiltLeft;
     public InputActionReference tiltRight;
     public InputActionReference tiltReset;
     public InputActionReference respawn;
+    public InputActionReference pause;
 
     RaycastHit jumpCast; 
 
@@ -43,7 +46,12 @@ public class ArcadePlayer : MonoBehaviour
         collider = GetComponent<BoxCollider2D>();
         initialPosition = transform.position + new Vector3(0f, 5.0f, 0f);
         castOffset = new Vector3(collider.bounds.extents.x, 0.0f, 0.0f);
-        raycastDistance = collider.bounds.extents.y +0.1f;
+        raycastDistance = collider.bounds.extents.y + 0.1f;
+        isPaused = false;
+
+
+        Debug.Log(pause);
+        Debug.Log(pause.action);
     }
 
     // Update is called once per frame
@@ -54,10 +62,12 @@ public class ArcadePlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        body.linearVelocityX = -direction.x * moveSpeed;
-        Debug.DrawRay(transform.position, Vector3.down * 10, Color.red);
-        body.AddForce(currentTilt);
-
+        if (!isPaused)
+        {
+            body.linearVelocityX = -direction.x * moveSpeed;
+            Debug.DrawRay(transform.position, Vector3.down * 10, Color.red);
+            body.AddForce(currentTilt);
+        }
     }
 
     private bool IsGroundedCentre()
@@ -77,6 +87,7 @@ public class ArcadePlayer : MonoBehaviour
 
     private void OnEnable()
     {
+        pause.action.performed += Pause;
         jump.action.started += Jump;
         HammerHit.Instance.hammerHitLeft += HammerLeft;
         HammerHit.Instance.hammerHitRight += HammerRight;
@@ -85,7 +96,7 @@ public class ArcadePlayer : MonoBehaviour
 
     private void Jump(InputAction.CallbackContext context)
     {
-        if (IsGroundedCentre()|| IsGroundedRight() || IsGroundedLeft())
+        if ((IsGroundedCentre()|| IsGroundedRight() || IsGroundedLeft()) && !isPaused)
         {
             body.linearVelocityY += jumpHeight;
         }
@@ -96,8 +107,24 @@ public class ArcadePlayer : MonoBehaviour
         }
     }
 
+    private void Pause(InputAction.CallbackContext context)
+    {
+        if (isPaused)
+        {
+            isPaused = false;
+            Debug.Log("Game is Unpaused");
+        }
+        else
+        {
+            isPaused = true;
+            Debug.Log("Game is Paused");
+        }
+        Debug.Log("Cheese");
+    }
+
     private void OnDisable()
     {
+        pause.action.performed -= Pause;
         jump.action.started -= Jump;
         // HammerHit.Instance.hammerHitLeft -= HammerLeft;
         // HammerHit.Instance.hammerHitRight -= HammerRight;
