@@ -40,7 +40,7 @@ public class GlitchManager : MonoBehaviour
             script = (GlitchZone)child.GetComponent(typeof(GlitchZone));
             if (script.zone == currentGlitchZone)
             {
-                script.GlitchEnable();
+                script.GlitchEnable(currentGlitchZone);
             }
             else
             {
