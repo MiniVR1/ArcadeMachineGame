@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Glitches : MonoBehaviour
 {
-    public bool glitching = true;
+    public bool glitching;
     GameObject self;
     Rigidbody2D body;
     Collider2D collider;
@@ -33,22 +33,10 @@ public class Glitches : MonoBehaviour
         }
     }
 
-    public void ChangeState(int zone)
-    {
-        if (glitching)
-        {
-            glitching = false;
-        }
-        else
-        {
-            glitching = true;
-        }
-        Debug.Log("I changed and I was from zone " + zone);
-    }
-
-    public void EnableGlitch()
+    public void EnableGlitch(int zone)
     {
         glitching = true;
+        Debug.Log("I changed and I was from zone " + zone);
     }
 
     public void DisableGlitch()

@@ -23,13 +23,13 @@ public class GlitchZone : MonoBehaviour
     //     Debug.Log("Test Success this is zone " + i);
     // }
 
-    public void GlitchEnable()
+    public void GlitchEnable(int zone)
     {
         GlitchList = gameObject.GetComponentsInChildren<Glitches>();
         foreach (Glitches child in GlitchList)
         {
             script = (Glitches)child.GetComponent(typeof(Glitches));
-            script.EnableGlitch();
+            script.EnableGlitch(zone);
         }
     }
 

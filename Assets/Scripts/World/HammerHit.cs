@@ -3,10 +3,20 @@ using UnityEngine;
 
 public class HammerHit : MonoBehaviour
 {
-    public static HammerHit instance;
+    private static HammerHit instance;
     public Rigidbody hammerRB;
 
     public delegate void HammerHasHit(float hitStrength);
+
+    public static HammerHit Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = GameObject.FindAnyObjectByType<HammerHit>();
+            return instance;
+        }
+    }
 
 
     // Create 3 lists of delegates so that other scripts can listen to when a hammer swing is detected.
@@ -14,11 +24,6 @@ public class HammerHit : MonoBehaviour
     public HammerHasHit hammerHitLeft;
     public HammerHasHit hammerHitRight;
     public HammerHasHit hammerHitTop;
-    
-    void Awake()
-    {
-        instance = this;
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -51,6 +56,7 @@ public class HammerHit : MonoBehaviour
         Vector3 endPos = transform.position;
         float speed = (startPos - endPos).magnitude / Time.deltaTime;
         Debug.Log("Hit at " + speed + " units of speed");
+        Debug.Log(list);
         if (list != null)
             list(speed);
     }
