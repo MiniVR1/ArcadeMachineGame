@@ -30,7 +30,7 @@ public class ArcadePlayer : MonoBehaviour
     public InputActionReference tiltReset;
     public InputActionReference respawn;
 
-    RaycastHit jumpCast; 
+    RaycastHit jumpCast;
 
     [SerializeField] private bool canJump = true;
 
@@ -78,8 +78,8 @@ public class ArcadePlayer : MonoBehaviour
     private void OnEnable()
     {
         jump.action.started += Jump;
-        HammerHit.Instance.hammerHitLeft += HammerLeft;
-        HammerHit.Instance.hammerHitRight += HammerRight;
+        // HammerHit.Instance.hammerHitLeft += HammerLeft;
+        // HammerHit.Instance.hammerHitRight += HammerRight;
         respawn.action.started += Respawn;
     }
 
@@ -119,59 +119,59 @@ public class ArcadePlayer : MonoBehaviour
     //     }
     // }
 
-    public void HammerLeft(float strength)
-    {
-        // first determine how much force was applied
-        if (strength > 20) // really strong swing, move it fully right no matter what
-        {
-            RightTilt();
-        }
-        else if (strength > 10) // move only by one stage
-        {
-            if (tiltState == TiltAmount.left)
-                DefaultTilt();
-            else
-                RightTilt();
-        }
-        // if it's less than 10, don't move at all as it wasn't a powerful enough swing
-    }
+    // public void HammerLeft(float strength)
+    // {
+    //     // first determine how much force was applied
+    //     if (strength > 20) // really strong swing, move it fully right no matter what
+    //     {
+    //         RightTilt();
+    //     }
+    //     else if (strength > 10) // move only by one stage
+    //     {
+    //         if (tiltState == TiltAmount.left)
+    //             DefaultTilt();
+    //         else
+    //             RightTilt();
+    //     }
+    //     // if it's less than 10, don't move at all as it wasn't a powerful enough swing
+    // }
 
-    public void HammerRight(float strength)
-    {
-        // first determine how much force was applied
-        if (strength > 20) // really strong swing, move it fully left no matter what
-        {
-            LeftTilt();
-        }
-        else if (strength > 10) // move only by one stage
-        {
-            if (tiltState == TiltAmount.left)
-                DefaultTilt();
-            else
-                LeftTilt();
-        }
-        // if it's less than 10, don't move at all as it wasn't a powerful enough swing
-    }
+    // public void HammerRight(float strength)
+    // {
+    //     // first determine how much force was applied
+    //     if (strength > 20) // really strong swing, move it fully left no matter what
+    //     {
+    //         LeftTilt();
+    //     }
+    //     else if (strength > 10) // move only by one stage
+    //     {
+    //         if (tiltState == TiltAmount.left)
+    //             DefaultTilt();
+    //         else
+    //             LeftTilt();
+    //     }
+    //     // if it's less than 10, don't move at all as it wasn't a powerful enough swing
+    // }
 
-    private void LeftTilt()
+    public void LeftTilt()
     {
         currentTilt = leftTilt;
-        Debug.Log("Tilting Left");
+        // Debug.Log("Tilting Left");
         camera.transform.rotation = Quaternion.Euler(leftCameraTilt);
         tiltState = TiltAmount.left;
     }
 
-    private void RightTilt()
+    public void RightTilt()
     {
         currentTilt = rightTilt;
-        Debug.Log("Tilting Right");
+        // Debug.Log("Tilting Right");
         camera.transform.rotation = Quaternion.Euler(rightCameraTilt);
         tiltState = TiltAmount.right;
     }
-    private void DefaultTilt()
+    public void DefaultTilt()
     {
         currentTilt = noTilt;
-        Debug.Log("Tilting Reset");
+        // Debug.Log("Tilting Reset");
         camera.transform.rotation = Quaternion.Euler(defaultCameraTilt);
         tiltState = TiltAmount.none;
     }
