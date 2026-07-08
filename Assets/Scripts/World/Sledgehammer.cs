@@ -110,29 +110,32 @@ public class Sledgehammer : MonoBehaviour
 
     public void OnGrab(InputValue value)
     {
-        if (!value.isPressed)
+        if (!value.isPressed || grabbing)
         {
             return;
         }
 
-        if (!grabbing)
+        Ray ray = camera.ScreenPointToRay(mouse);
+        if (Physics.Raycast(ray, out RaycastHit hit) && Collided(hit.collider))
         {
-            Ray ray = camera.ScreenPointToRay(mouse);
-            if (Physics.Raycast(ray, out RaycastHit hit) && Collided(hit.collider))
-            {
-                grabbing = true;
+            grabbing = true;
 
-                rb.rotation = uprightRotation;
-                rb.angularVelocity = Vector3.zero;
-                rb.linearVelocity = Vector3.zero;
+            rb.rotation = uprightRotation;
+            rb.angularVelocity = Vector3.zero;
+            rb.linearVelocity = Vector3.zero;
 
-                rb.useGravity = false;
-            }
+            rb.useGravity = false;
         }
-        else
+    }
+
+    public void OnRelease(InputValue value)
+    {
+        if (!value.isPressed || !grabbing)
         {
-            pendingRelease = true;
+            return;
         }
+
+        pendingRelease = true;
     }
 
     private bool Collided(Collider hitCollider)
