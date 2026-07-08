@@ -11,12 +11,14 @@ public class HammerMovement : MonoBehaviour
     public Rigidbody rb;
 
     public List<GameObject> pivots;
+    public LayerMask raycastMask;
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        returnPos = transform.position;
+        returnPos = rb.position;
+        returnRot = rb.rotation;
     }
 
     // Update is called once per frame
@@ -28,8 +30,14 @@ public class HammerMovement : MonoBehaviour
         {
             // convert the mouse position to a world position
             Vector3 mousePos = Mouse.current.position.ReadValue();
-            mousePos.z = distance;
-            worldPos = Camera.main.ScreenToWorldPoint(mousePos);
+            
+            Ray ray = Camera.main.ScreenPointToRay(mousePos);
+
+            if (Physics.Raycast(ray, out RaycastHit hit, 100, raycastMask))
+                worldPos = hit.point;
+            else
+                worldPos = returnPos;
+
 
             // find out which pivot is closest
             float closestDist = 1000f;
@@ -50,6 +58,9 @@ public class HammerMovement : MonoBehaviour
         else
         {
             worldPos = returnPos;
+            // rotate to face upwards
+            float rot = returnRot.eulerAngles.z;
+            rb.MoveRotation(Quaternion.Euler(0, 0, rot));
         }
         rb.linearVelocity = (worldPos - transform.position) * moveSpeed;
     }
