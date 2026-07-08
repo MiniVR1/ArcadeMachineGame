@@ -54,14 +54,14 @@ public class SoundManager : MonoBehaviour
     public void SetSFXVolume(float level)
     {
         sfxVolume = level;
-        audioMixer.SetFloat("sfxVolume", Mathf.Log10(level) * 20f);
+        audioMixer.SetFloat("Sfx", Mathf.Log10(level) * 20f);
         sfx_VolumeTxt.text = (Mathf.Round(level * 100)).ToString();
     }
 
     public void SetMusicVolume(float level)
     {
         bgmVolume = level;
-        audioMixer.SetFloat("musicVolume", Mathf.Log10(level) * 20f);
+        audioMixer.SetFloat("Music", Mathf.Log10(level) * 20f);
         music_VolumeTxt.text = (Mathf.Round(level * 100)).ToString();
     }
 
