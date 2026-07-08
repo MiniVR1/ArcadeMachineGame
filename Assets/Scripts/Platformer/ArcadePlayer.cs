@@ -118,9 +118,12 @@ public class ArcadePlayer : MonoBehaviour
     {
         if (uiReference != null)        // This prevents a situation where pause won't work where the UI is not implemented yet - Evan
         {
-            isPaused = true;
-            uiReference.OpenEscapeMenu();
-            Debug.Log("Game is Paused");
+            if (!uiReference.isInStartMenu)
+            {
+                isPaused = true;
+                uiReference.OpenEscapeMenu();
+                Debug.Log("Game is Paused");
+            }
         }
         else
         {

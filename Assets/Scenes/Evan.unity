@@ -2164,7 +2164,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1611145933}
         m_TargetAssemblyTypeName: UI_Nav, Assembly-CSharp
-        m_MethodName: StartGame
+        m_MethodName: CloseEscapeMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2682,7 +2682,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1611145933}
         m_TargetAssemblyTypeName: UI_Nav, Assembly-CSharp
-        m_MethodName: OpenLevelSelect
+        m_MethodName: OpenStartMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

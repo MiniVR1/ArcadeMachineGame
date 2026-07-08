@@ -18,13 +18,14 @@ public class UI_Nav : MonoBehaviour
 
     [Header("UI Nav Variables")]
     [SerializeField] private EventSystem eventSystem;
-    [SerializeField] private bool isInStartMenu = true;
+    public bool isInStartMenu = true;
     public ArcadePlayer gamePlayer;
 
     public void StartGame()
     {
         startMenu.SetActive(false);
         gamePlayer.isPaused = false;
+        isInStartMenu = false;
     }
 
     public void OpenLevelSelect()
@@ -69,7 +70,10 @@ public class UI_Nav : MonoBehaviour
 
     public void OpenStartMenu()
     {
+        isInStartMenu = true;
         escapeMenu.SetActive(false);
+        startMenu.SetActive(true);
+        JumpToElement(startButton);
     }
 
     public void JumpToElement(Selectable selectedObject)
