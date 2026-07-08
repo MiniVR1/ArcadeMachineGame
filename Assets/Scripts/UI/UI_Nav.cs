@@ -15,6 +15,11 @@ public class UI_Nav : MonoBehaviour
     public Selectable optionsButton;
     public Selectable levelSelectButton;
 
+    public void StartGame()
+    {
+        StartMenu.SetActive(false);
+    }
+
     public void OpenLevelSelect()
     {
         StartMenu.SetActive(false);
