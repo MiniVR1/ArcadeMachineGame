@@ -44,16 +44,33 @@ public class UI_Nav : MonoBehaviour
 
     public void OpenOptions()
     {
-        startMenu.SetActive(false);
-        optionsMenu.SetActive(true);
-        JumpToElement(optionsButton);
+        if (isInStartMenu)
+        {
+            startMenu.SetActive(false);
+            optionsMenu.SetActive(true);
+        }
+        else
+        {
+            escapeMenu.SetActive(false);
+            optionsMenu.SetActive(true);
+        }
+            JumpToElement(optionsButton);
     }
 
     public void CloseOptions()
     {
-        optionsMenu.SetActive(false);
-        startMenu.SetActive(true);
-        JumpToElement(startButton);
+        if (isInStartMenu)
+        {
+            optionsMenu.SetActive(false);
+            startMenu.SetActive(true);
+            JumpToElement(startButton);
+        }
+        else
+        {
+            optionsMenu.SetActive(false);
+            escapeMenu.SetActive(true);
+            JumpToElement(escapeMenuButton);
+        }
     }
 
     public void OpenEscapeMenu()
