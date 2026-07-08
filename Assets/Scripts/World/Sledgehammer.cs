@@ -11,6 +11,7 @@ public class Sledgehammer : MonoBehaviour
 
     [SerializeField] private Camera camera;
     [SerializeField] private Transform grabPoint;
+    [SerializeField] private bool InUI = false;
 
     private Vector3 originPosition;
     private Quaternion originRotation;
@@ -110,7 +111,7 @@ public class Sledgehammer : MonoBehaviour
 
     public void OnGrab(InputValue value)
     {
-        if (!value.isPressed || grabbing)
+        if (!value.isPressed || grabbing || InUI)
         {
             return;
         }
