@@ -3,9 +3,9 @@ using UnityEngine.InputSystem;
 
 public class Sledgehammer : MonoBehaviour
 {
-    [SerializeField] private float zDistance = 5f;
-    [SerializeField] private float followSpeed = 20f;
-    [SerializeField] private float swingSensitivity = 5f;
+    [SerializeField] private float zDistance = 4f;
+    [SerializeField] private float followSpeed = 15f;
+    [SerializeField] private float swingSensitivity = 4f;
     [SerializeField] private float maxSwingAngle = 80f;
     [SerializeField] private float rotationSpeed = 20f;
 
@@ -17,7 +17,7 @@ public class Sledgehammer : MonoBehaviour
     private Quaternion uprightRotation;
 
     private Rigidbody rb;
-    private Collider collider;
+    private Collider[] colliders;
 
     private bool grabbing = false;
     private bool pendingRelease = false;
@@ -36,7 +36,7 @@ public class Sledgehammer : MonoBehaviour
         uprightRotation = originRotation * Quaternion.Euler(0f, 0f, 180f);
 
         rb = GetComponent<Rigidbody>();
-        collider = GetComponent<Collider>();
+        colliders = GetComponentsInChildren<Collider>();
 
         if (camera == null)
         {
@@ -66,11 +66,10 @@ public class Sledgehammer : MonoBehaviour
             float tiltOffset = -horizontalVelocity * swingSensitivity;
             tiltOffset = Mathf.Clamp(tiltOffset, -maxSwingAngle, maxSwingAngle);
 
-            // Multiply on the LEFT to apply the tilt in World/Screen space
             // This forces it to tilt along the screen's flat plane, no matter your inspector settings
             Quaternion targetRotation = Quaternion.Euler(0f, 0f, tiltOffset) * uprightRotation;
 
-            // Apply the Rotation via Angular Velocity (Leave this exactly as is)
+            // Apply the Rotation via Angular Velocity
             Quaternion deltaRot = targetRotation * Quaternion.Inverse(rb.rotation);
             deltaRot.ToAngleAxis(out float angle, out Vector3 axis);
 
@@ -119,7 +118,7 @@ public class Sledgehammer : MonoBehaviour
         if (!grabbing)
         {
             Ray ray = camera.ScreenPointToRay(mouse);
-            if (Physics.Raycast(ray, out RaycastHit hit) && hit.collider == collider)
+            if (Physics.Raycast(ray, out RaycastHit hit) && Collided(hit.collider))
             {
                 grabbing = true;
 
@@ -134,5 +133,17 @@ public class Sledgehammer : MonoBehaviour
         {
             pendingRelease = true;
         }
+    }
+
+    private bool Collided(Collider hitCollider)
+    {
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            if (hitCollider == colliders[i])
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

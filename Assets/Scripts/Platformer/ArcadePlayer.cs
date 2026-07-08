@@ -69,8 +69,8 @@ public class ArcadePlayer : MonoBehaviour
     private void OnDisable()
     {
         jump.action.started -= Jump;
-        HammerHit.Instance.hammerHitLeft -= HammerLeft;
-        HammerHit.Instance.hammerHitRight -= HammerRight;
+        // HammerHit.Instance.hammerHitLeft -= HammerLeft;
+        // HammerHit.Instance.hammerHitRight -= HammerRight;
         respawn.action.started -= Respawn;
     }
 
