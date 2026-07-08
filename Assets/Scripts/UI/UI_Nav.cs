@@ -5,47 +5,71 @@ using UnityEngine.UI;
 public class UI_Nav : MonoBehaviour
 {
     [Header("UI Menus")]
-    public GameObject StartMenu;
-    public GameObject OptionsMenu;
-    public GameObject SelectLevelMenu;
+    public GameObject startMenu;
+    public GameObject selectLevelMenu;
+    public GameObject optionsMenu;
+    public GameObject escapeMenu;
 
     [Header("Setup")]
-    [SerializeField] private EventSystem eventSystem;
-    public Selectable StartButton;
-    public Selectable optionsButton;
+    public Selectable startButton;
     public Selectable levelSelectButton;
+    public Selectable optionsButton;
+    public Selectable escapeMenuButton;
+
+    [Header("UI Nav Variables")]
+    [SerializeField] private EventSystem eventSystem;
+    [SerializeField] private bool isInStartMenu = true;
+    public ArcadePlayer gamePlayer;
 
     public void StartGame()
     {
-        StartMenu.SetActive(false);
+        startMenu.SetActive(false);
+        gamePlayer.isPaused = false;
     }
 
     public void OpenLevelSelect()
     {
-        StartMenu.SetActive(false);
-        SelectLevelMenu.SetActive(true);
+        startMenu.SetActive(false);
+        selectLevelMenu.SetActive(true);
         JumpToElement(levelSelectButton);
     }
 
     public void CloseLevelSelect()
     {
-        SelectLevelMenu.SetActive(false);
-        StartMenu.SetActive(true);
-        JumpToElement(StartButton);
+        selectLevelMenu.SetActive(false);
+        startMenu.SetActive(true);
+        JumpToElement(startButton);
     }
 
     public void OpenOptions()
     {
-        StartMenu.SetActive(false);
-        OptionsMenu.SetActive(true);
+        startMenu.SetActive(false);
+        optionsMenu.SetActive(true);
         JumpToElement(optionsButton);
     }
 
     public void CloseOptions()
     {
-        OptionsMenu.SetActive(false);
-        StartMenu.SetActive(true);
-        JumpToElement(StartButton);
+        optionsMenu.SetActive(false);
+        startMenu.SetActive(true);
+        JumpToElement(startButton);
+    }
+
+    public void OpenEscapeMenu()
+    {
+        escapeMenu.SetActive(true);
+        JumpToElement(escapeMenuButton);
+    }
+
+    public void CloseEscapeMenu()
+    {
+        escapeMenu.SetActive(false);
+        gamePlayer.isPaused = false;
+    }
+
+    public void OpenStartMenu()
+    {
+        escapeMenu.SetActive(false);
     }
 
     public void JumpToElement(Selectable selectedObject)

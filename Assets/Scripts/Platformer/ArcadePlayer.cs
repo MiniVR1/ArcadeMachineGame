@@ -7,6 +7,7 @@ public class ArcadePlayer : MonoBehaviour
     Collider2D collider;
 
     public Camera camera;
+    public UI_Nav uiReference;
 
     [SerializeField] private float moveSpeed = 5.0f;
     [SerializeField] private float jumpHeight = 3.0f;
@@ -23,7 +24,7 @@ public class ArcadePlayer : MonoBehaviour
     private Vector3 currentTilt;
     private Vector3 initialPosition;
 
-    private bool isPaused;
+    public bool isPaused; // Making this public so I can manipulate this from the UI_Nav - Evan
 
     public InputActionReference move;
     public InputActionReference jump;
@@ -49,6 +50,12 @@ public class ArcadePlayer : MonoBehaviour
         raycastDistance = collider.bounds.extents.y + 0.1f;
         isPaused = false;
 
+        // Temp Setting for when UI is found and active - Evan
+        if (uiReference != null)
+        {
+            isPaused = true;
+        }
+        //
 
         Debug.Log(pause);
         Debug.Log(pause.action);
@@ -109,16 +116,26 @@ public class ArcadePlayer : MonoBehaviour
 
     private void Pause(InputAction.CallbackContext context)
     {
-        if (isPaused)
+        if (uiReference != null)        // This prevents a situation where pause won't work where the UI is not implemented yet - Evan
         {
-            isPaused = false;
-            Debug.Log("Game is Unpaused");
+            isPaused = true;
+            uiReference.OpenEscapeMenu();
+            Debug.Log("Game is Paused");
         }
         else
         {
-            isPaused = true;
-            Debug.Log("Game is Paused");
+            if (isPaused)
+            {
+                isPaused = false;
+                Debug.Log("Game is Unpaused");
+            }
+            else
+            {
+                isPaused = true;
+                Debug.Log("Game is Paused");
+            }
         }
+
         Debug.Log("Cheese");
     }
 

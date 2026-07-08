@@ -35,7 +35,6 @@ public class SoundManager : MonoBehaviour
     public Slider sfx_Volume;
     public Slider music_Volume;
 
-
     public void PlayUISound(AudioClip audioToPlay)
     {
         SFXSoundSource.PlayOneShot(audioToPlay);
@@ -64,38 +63,6 @@ public class SoundManager : MonoBehaviour
         audioMixer.SetFloat("Music", Mathf.Log10(level) * 20f);
         music_VolumeTxt.text = (Mathf.Round(level * 100)).ToString();
     }
-
-    /*
-    public void MuteAllSound()
-    {
-        if (!muVolume.isOn)
-        {
-            audioMixer.SetFloat("masterVolume", Mathf.Log10(masterVolume) * 20f);
-            isMuted = false;
-        }
-        else
-        {
-            audioMixer.SetFloat("masterVolume", -80f);
-            isMuted = true;
-        }
-    }
-    */
-
-    /*
-    public void SetMuted(bool mute)
-    {
-        if (isMuted)
-        {
-            audioMixer.SetFloat("masterVolume", -80f);
-            isMuted = true;
-        }
-        else
-        {
-            audioMixer.SetFloat("masterVolume", Mathf.Log10(masterVolume) * 20f);
-            isMuted = false;
-        }
-    }
-    */
 
     private void Awake()
     {
