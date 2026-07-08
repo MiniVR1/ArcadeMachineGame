@@ -50,8 +50,6 @@ public class ArcadePlayer : MonoBehaviour
     void Update()
     {
         direction = move.action.ReadValue<Vector2>();
-        Vector3 down = transform.TransformDirection(Vector3.down) * 10;
-        Debug.DrawRay(transform.position,down, Color.green);
     }
 
     private void FixedUpdate()
