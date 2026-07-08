@@ -4,11 +4,13 @@ using UnityEngine.InputSystem;
 public class ArcadePlayer : MonoBehaviour
 {
     Rigidbody2D body;
+    Collider2D collider;
 
-    public Camera camera; 
+    public Camera camera;
 
     [SerializeField] private float moveSpeed = 5.0f;
     [SerializeField] private float jumpHeight = 3.0f;
+    private float raycastDistance;
 
     private Vector2 direction;
     [SerializeField] private Vector3 leftTilt = new Vector3(2.0f, -9.81f, 0f);
@@ -17,6 +19,7 @@ public class ArcadePlayer : MonoBehaviour
     [SerializeField] private Vector3 leftCameraTilt = new Vector3(0f, 180f, -10f);
     [SerializeField] private Vector3 rightCameraTilt = new Vector3(0f, 180f, 10f);
     [SerializeField] private Vector3 defaultCameraTilt = new Vector3(0f, 180f, 0f);
+    private Vector3 castOffset;
     private Vector3 currentTilt;
     private Vector3 initialPosition;
 
@@ -27,6 +30,8 @@ public class ArcadePlayer : MonoBehaviour
     public InputActionReference tiltReset;
     public InputActionReference respawn;
 
+    RaycastHit jumpCast; 
+
     [SerializeField] private bool canJump = true;
 
     public TiltAmount tiltState = TiltAmount.none;
@@ -35,19 +40,41 @@ public class ArcadePlayer : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        collider = GetComponent<BoxCollider2D>();
         initialPosition = transform.position + new Vector3(0f, 5.0f, 0f);
+        castOffset = new Vector3(collider.bounds.extents.x, 0.0f, 0.0f);
+        raycastDistance = collider.bounds.extents.y +0.1f;
     }
 
     // Update is called once per frame
     void Update()
     {
         direction = move.action.ReadValue<Vector2>();
+        Vector3 down = transform.TransformDirection(Vector3.down) * 10;
+        Debug.DrawRay(transform.position,down, Color.green);
     }
 
     private void FixedUpdate()
     {
         body.linearVelocityX = -direction.x * moveSpeed;
+        Debug.DrawRay(transform.position, Vector3.down * 10, Color.red);
         body.AddForce(currentTilt);
+
+    }
+
+    private bool IsGroundedCentre()
+    {
+        return Physics2D.Raycast(transform.position, Vector3.down, raycastDistance, LayerMask.GetMask("Platform"));
+    }
+
+    private bool IsGroundedLeft()
+    {
+        return Physics2D.Raycast(transform.position + castOffset, Vector3.down, raycastDistance, LayerMask.GetMask("Platform"));
+    }
+
+    private bool IsGroundedRight()
+    {
+        return Physics2D.Raycast(transform.position - castOffset, Vector3.down, raycastDistance, LayerMask.GetMask("Platform"));
     }
 
     private void OnEnable()
@@ -60,34 +87,39 @@ public class ArcadePlayer : MonoBehaviour
 
     private void Jump(InputAction.CallbackContext context)
     {
-        if (canJump)
+        if (IsGroundedCentre()|| IsGroundedRight() || IsGroundedLeft())
         {
             body.linearVelocityY += jumpHeight;
+        }
+        else
+        {
+            Debug.Log("Can't Jump!");
+            return;
         }
     }
 
     private void OnDisable()
     {
         jump.action.started -= Jump;
-        HammerHit.Instance.hammerHitLeft -= HammerLeft;
-        HammerHit.Instance.hammerHitRight -= HammerRight;
+        // HammerHit.Instance.hammerHitLeft -= HammerLeft;
+        // HammerHit.Instance.hammerHitRight -= HammerRight;
         respawn.action.started -= Respawn;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Glitches"))
-        {
-            canJump = true;
-        }
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Glitches"))
-        {
-            canJump = false;
-        }
-    }
+    // private void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Glitches"))
+    //     {
+    //         canJump = true;
+    //     }
+    // }
+    // private void OnCollisionExit2D(Collision2D collision)
+    // {
+    //     if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Glitches"))
+    //     {
+    //         canJump = false;
+    //     }
+    // }
 
     public void HammerLeft(float strength)
     {
