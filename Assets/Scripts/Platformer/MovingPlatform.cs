@@ -30,7 +30,6 @@ public class MovingPlatform : MonoBehaviour
         if(other.gameObject.CompareTag("DirectionChange")){
             direction = -direction;
         }
-        Debug.Log("Penguins");
     }
 
     private void OnCollisionEnter2D(Collision2D other){
