@@ -6,14 +6,15 @@ public class HitBroadcaster : MonoBehaviour
     public float lockedTime = 0.2f;
     private bool hammerLocked = false;
 
-    public delegate void HammerHasHit(float hitStrength);
+    public delegate void HasHit(float hitStrength);
 
 
     // Create 3 lists of delegates so that other scripts can listen to when a hammer swing is detected.
     // E.g. to make a public function called "TiltMachine(float hitStrength)" be called whenever the hammer is swung, run "HammerHit.instance.hammerHitLeft += TiltMachine;" on startup
-    public HammerHasHit hammerHitLeft;
-    public HammerHasHit hammerHitRight;
-    public HammerHasHit hammerHitTop;
+    public HasHit hitLeft;
+    public HasHit hitRight;
+    public HasHit hitTop;
+    public HasHit hitConsole;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -23,23 +24,28 @@ public class HitBroadcaster : MonoBehaviour
             {
                 case "LeftSide":
                     {
-                        StartCoroutine(CallHammerHit(hammerHitLeft));
+                        StartCoroutine(CallHammerHit(hitLeft));
                         break;
                     }
                 case "RightSide":
                     {
-                        StartCoroutine(CallHammerHit(hammerHitRight));
+                        StartCoroutine(CallHammerHit(hitRight));
                         break;
                     }
                 case "Top":
                     {
-                        StartCoroutine(CallHammerHit(hammerHitTop));
+                        StartCoroutine(CallHammerHit(hitTop));
+                        break;
+                    }
+                case "MainConsole":
+                    {
+                        StartCoroutine(CallHammerHit(hitConsole));
                         break;
                     }
             }
     }
 
-    private IEnumerator CallHammerHit(HammerHasHit list)
+    private IEnumerator CallHammerHit(HasHit list)
     {
         hammerLocked = true;
         Vector3 startPos = transform.position;
