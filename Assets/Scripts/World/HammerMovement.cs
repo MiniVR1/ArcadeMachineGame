@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class HammerMovement : InteractableObject
+public class HammerMovement : MonoBehaviour
 {
     Vector3 returnPos;
     Quaternion returnRot;
@@ -12,8 +12,6 @@ public class HammerMovement : InteractableObject
 
     public List<GameObject> pivots;
     public LayerMask raycastMask;
-
-    private bool isGrabbed = false;
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -28,15 +26,8 @@ public class HammerMovement : InteractableObject
     {       
         // Do different logic depending if we are returning the hammer or picking it up
         Vector3 worldPos;
-        
-        
-        if (isGrabbed)
+        if (Mouse.current.leftButton.IsPressed())
         {
-            if (!Mouse.current.leftButton.IsPressed())
-            {
-                isGrabbed = false;
-            }
-
             // convert the mouse position to a world position
             Vector3 mousePos = Mouse.current.position.ReadValue();
             
@@ -72,10 +63,5 @@ public class HammerMovement : InteractableObject
             rb.MoveRotation(Quaternion.Euler(0, 0, rot));
         }
         rb.linearVelocity = (worldPos - transform.position) * moveSpeed;
-    }
-
-    public override void OnInteract()
-    {
-        isGrabbed = true;
     }
 }

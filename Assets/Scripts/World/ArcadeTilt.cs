@@ -5,8 +5,6 @@ public class ArcadeTilt : MonoBehaviour
     [SerializeField] private float tiltSpeed = 20f;
     [SerializeField] const float tilt_ang = 30.0f;
     [SerializeField] private float hitCooldown = 0.15f;
-    [SerializeField] private ArcadePlayer player;
-
     private float cooldownTimer = 0f;
     const float EPS = 1e-3f;
 
@@ -18,11 +16,6 @@ public class ArcadeTilt : MonoBehaviour
 
     private float lerp = 0.0f;
     private Collider[] colliders;
-
-    void Awake()
-    {
-        player = FindAnyObjectByType<ArcadePlayer>();
-    }
 
     void Start()
     {
@@ -112,14 +105,6 @@ public class ArcadeTilt : MonoBehaviour
 
         tilt = Mathf.Clamp(tilt - tilt_ang, -tilt_ang, tilt_ang);
         StartRotation();
-        if (Mathf.Approximately(tilt, 0f))
-        {
-            player.DefaultTilt();
-        }
-        else
-        {
-            player.LeftTilt();
-        }
     }
 
     private void TiltRight(float hitStrength)
@@ -131,13 +116,5 @@ public class ArcadeTilt : MonoBehaviour
 
         tilt = Mathf.Clamp(tilt + tilt_ang, -tilt_ang, tilt_ang);
         StartRotation();
-        if (Mathf.Approximately(tilt, 0f))
-        {
-            player.DefaultTilt();
-        }
-        else
-        {
-            player.RightTilt();
-        }
     }
 }

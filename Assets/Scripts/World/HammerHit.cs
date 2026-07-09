@@ -27,7 +27,7 @@ public class HammerHit : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // Debug.Log(other.gameObject.name);
+        Debug.Log(other.gameObject.name);
         switch (other.gameObject.name)
         {
             case "LeftSide":
