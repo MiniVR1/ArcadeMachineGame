@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class JumpButton : InteractableObject
 {
-    private static BaseballHit instance;
+    private static JumpButton instance;
 
-    public static BaseballHit Instance
+    public static JumpButton Instance
     {
         get
         {
             if (instance == null)
-                instance = GameObject.FindAnyObjectByType<BaseballHit>();
+                instance = GameObject.FindAnyObjectByType<JumpButton>();
             return instance;
         }
     }
