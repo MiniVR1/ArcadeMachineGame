@@ -26,6 +26,7 @@ public class UI_Nav : MonoBehaviour
         startMenu.SetActive(false);
         gamePlayer.isPaused = false;
         isInStartMenu = false;
+        UI_Manager.uiMenuNum = 6;
     }
 
     public void OpenLevelSelect()
@@ -33,6 +34,7 @@ public class UI_Nav : MonoBehaviour
         startMenu.SetActive(false);
         selectLevelMenu.SetActive(true);
         JumpToElement(levelSelectButton);
+        UI_Manager.uiMenuNum = 2;
     }
 
     public void CloseLevelSelect()
@@ -40,6 +42,7 @@ public class UI_Nav : MonoBehaviour
         selectLevelMenu.SetActive(false);
         startMenu.SetActive(true);
         JumpToElement(startButton);
+        UI_Manager.uiMenuNum = 1;
     }
 
     public void OpenOptions()
@@ -48,13 +51,16 @@ public class UI_Nav : MonoBehaviour
         {
             startMenu.SetActive(false);
             optionsMenu.SetActive(true);
+            JumpToElement(optionsButton);
+            UI_Manager.uiMenuNum = 1;
         }
         else
         {
             escapeMenu.SetActive(false);
             optionsMenu.SetActive(true);
-        }
             JumpToElement(optionsButton);
+            UI_Manager.uiMenuNum = 4;
+        }
     }
 
     public void CloseOptions()
@@ -64,12 +70,14 @@ public class UI_Nav : MonoBehaviour
             optionsMenu.SetActive(false);
             startMenu.SetActive(true);
             JumpToElement(startButton);
+            UI_Manager.uiMenuNum = 1;
         }
         else
         {
             optionsMenu.SetActive(false);
             escapeMenu.SetActive(true);
             JumpToElement(escapeMenuButton);
+            UI_Manager.uiMenuNum = 4;
         }
     }
 
@@ -77,12 +85,14 @@ public class UI_Nav : MonoBehaviour
     {
         escapeMenu.SetActive(true);
         JumpToElement(escapeMenuButton);
+        UI_Manager.uiMenuNum = 4;
     }
 
     public void CloseEscapeMenu()
     {
         escapeMenu.SetActive(false);
         gamePlayer.isPaused = false;
+        UI_Manager.uiMenuNum = 6;
     }
 
     public void OpenStartMenu()
@@ -91,6 +101,7 @@ public class UI_Nav : MonoBehaviour
         escapeMenu.SetActive(false);
         startMenu.SetActive(true);
         JumpToElement(startButton);
+        UI_Manager.uiMenuNum = 1;
     }
 
     public void JumpToElement(Selectable selectedObject)
