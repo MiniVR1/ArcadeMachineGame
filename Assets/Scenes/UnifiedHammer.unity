@@ -2133,7 +2133,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8115695526189438893, guid: 04f2006354e105f48b06a5c24965a266, type: 3}
   m_PrefabInstance: {fileID: 748747788495298539}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &474350752
+--- !u!114 &474350758
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2142,20 +2142,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 474350746}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81ef7081697ea924785c300b6290f1f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 5892ab736bb28b7489999cf23537eb01, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Baseball
-  zDistance: 4
+  m_EditorClassIdentifier: Assembly-CSharp::NewBaseball
   followSpeed: 15
   swingSensitivity: 4
   maxSwingAngle: 80
   rotationSpeed: 20
   grabPoint: {fileID: 0}
-  InUI: 0
+  itemHitLayer:
+    serializedVersion: 2
+    m_Bits: 64
   maxBatAngle: 70
   batVelocity: 500
   recoverSpeed: 250
---- !u!114 &474350753
+--- !u!114 &474350759
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2164,27 +2165,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 474350746}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ff12a33a71b5564b9027f6f7f59edb9, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: 948cd00f97b2be045a76f5d4bdcf66d5, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Item
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::BaseballHit
+  lockedTime: 0.2
+--- !u!136 &474350760
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474350746}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.75
+  m_Height: 2.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &478906172 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4594498018718906283, guid: 3e5aed3ef6bb870499c26934a777b52a, type: 3}
@@ -2207,13 +2214,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3feed159fcee36d47a054291649a3431, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewHammer
-  zDistance: 4
   followSpeed: 15
   swingSensitivity: 4
   maxSwingAngle: 80
   rotationSpeed: 20
   grabPoint: {fileID: 0}
-  InUI: 0
   itemHitLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -4564,6 +4569,44 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1666267969}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1721020157 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1031241730686136083, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
+  m_PrefabInstance: {fileID: 6115191478892340655}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1721020161
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721020157}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0016956175, y: 0.0018743371, z: 0.0009340288}
+  m_Center: {x: 0.012641789, y: -0.0025108051, z: 0.019330863}
+--- !u!114 &1721020162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1721020157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b8983313246e4a4794fd7cc5694c143, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JumpButton
 --- !u!1 &1771176459
 GameObject:
   m_ObjectHideFlags: 0
@@ -5343,10 +5386,13 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4596036527072431701, guid: 04f2006354e105f48b06a5c24965a266, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 474350752}
+      addedObject: {fileID: 474350758}
     - targetCorrespondingSourceObject: {fileID: 4596036527072431701, guid: 04f2006354e105f48b06a5c24965a266, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 474350753}
+      addedObject: {fileID: 474350760}
+    - targetCorrespondingSourceObject: {fileID: 4596036527072431701, guid: 04f2006354e105f48b06a5c24965a266, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 474350759}
   m_SourcePrefab: {fileID: 100100000, guid: 04f2006354e105f48b06a5c24965a266, type: 3}
 --- !u!1001 &2081183131767246444
 PrefabInstance:
@@ -5501,6 +5547,12 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1031241730686136083, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1721020162}
+    - targetCorrespondingSourceObject: {fileID: 1031241730686136083, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1721020161}
     - targetCorrespondingSourceObject: {fileID: 4128778052758257850, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6115191478892340657}

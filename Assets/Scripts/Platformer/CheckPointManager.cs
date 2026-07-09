@@ -49,6 +49,6 @@ public class CheckPointManager : MonoBehaviour
 
     public void SetRespawn(CheckPoint checkPoint)
     {
-        arcadePlayer.SetRespawn(checkPoint.transform.position);
+       arcadePlayer.SetRespawn(checkPoint.transform.position);
     }
 }

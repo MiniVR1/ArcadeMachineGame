@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class HitBroadcaster : MonoBehaviour
 {
-    public Rigidbody hammerRB;
-
     public float lockedTime = 0.2f;
     private bool hammerLocked = false;
 
