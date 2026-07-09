@@ -53,16 +53,16 @@ public class ArcadeTilt : MonoBehaviour
 
     private void OnEnable()
     {
-        HammerHit.Instance.hammerHitLeft += TiltRight;
-        HammerHit.Instance.hammerHitRight += TiltLeft;
+        HammerHit.Instance.hitLeft += TiltRight;
+        HammerHit.Instance.hitRight += TiltLeft;
     }
 
     private void OnDisable()
     {
         if (HammerHit.Instance != null)
         {
-            HammerHit.Instance.hammerHitLeft -= TiltRight;
-            HammerHit.Instance.hammerHitRight -= TiltLeft;
+            HammerHit.Instance.hitLeft -= TiltRight;
+            HammerHit.Instance.hitRight -= TiltLeft;
         }
     }
 

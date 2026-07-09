@@ -107,8 +107,8 @@ public class ArcadePlayer : MonoBehaviour
     {
         pause.action.performed += Pause;
         jump.action.started += Jump;
-        HammerHit.Instance.hammerHitLeft += HammerLeft;
-        HammerHit.Instance.hammerHitRight += HammerRight;
+        HammerHit.Instance.hitLeft += HammerLeft;
+        HammerHit.Instance.hitRight += HammerRight;
         respawn.action.started += RespawnDebug;
     }
 

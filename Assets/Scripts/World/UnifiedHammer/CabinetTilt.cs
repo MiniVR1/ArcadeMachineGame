@@ -12,8 +12,8 @@ public class CabinetTilt : MonoBehaviour
 
     private void OnEnable()
     {
-        HammerHit.Instance.hammerHitLeft += HammerCabinetLeft;
-        HammerHit.Instance.hammerHitRight += HammerCabinetRight;
+        HammerHit.Instance.hitLeft += HammerCabinetLeft;
+        HammerHit.Instance.hitRight += HammerCabinetRight;
     }
 
     public void HammerCabinetLeft(float strength)
