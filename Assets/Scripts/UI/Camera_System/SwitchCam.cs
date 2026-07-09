@@ -13,6 +13,7 @@ public class SwitchCam : MonoBehaviour
         Reality_Canvas.SetActive(false);
         CameraManager.SwitchCamera(cam1);
         script.JumpToElement();
+        UI_Manager.uiMenuNum = 1;
     }
 
     public void SwitchCam2()
