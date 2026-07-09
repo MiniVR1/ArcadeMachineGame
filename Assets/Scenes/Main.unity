@@ -2721,6 +2721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ArcadePlayer
   camera: {fileID: 1906932475}
+  uiReference: {fileID: 0}
   moveSpeed: 5
   jumpHeight: 4
   leftTilt: {x: 20, y: 0, z: 0}
@@ -2729,12 +2730,14 @@ MonoBehaviour:
   leftCameraTilt: {x: 0, y: 180, z: -30}
   rightCameraTilt: {x: 0, y: 180, z: 30}
   defaultCameraTilt: {x: 0, y: 180, z: 0}
+  isPaused: 0
   move: {fileID: -4574680043286130804, guid: 3b4b16ba8c9af48f198d1b930cb6694e, type: 3}
   jump: {fileID: 3874535947816775757, guid: 3b4b16ba8c9af48f198d1b930cb6694e, type: 3}
   tiltLeft: {fileID: 510522003452572228, guid: 3b4b16ba8c9af48f198d1b930cb6694e, type: 3}
   tiltRight: {fileID: -7700381525307741439, guid: 3b4b16ba8c9af48f198d1b930cb6694e, type: 3}
   tiltReset: {fileID: -7247615866045321184, guid: 3b4b16ba8c9af48f198d1b930cb6694e, type: 3}
   respawn: {fileID: -1769718680629080896, guid: 3b4b16ba8c9af48f198d1b930cb6694e, type: 3}
+  pause: {fileID: -3200350938741951452, guid: 3b4b16ba8c9af48f198d1b930cb6694e, type: 3}
   canJump: 1
   tiltState: 1
 --- !u!114 &717194600
