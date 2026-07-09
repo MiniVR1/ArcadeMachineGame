@@ -96,8 +96,8 @@ public class ArcadePlayer : MonoBehaviour
     {
         pause.action.performed += Pause;
         jump.action.started += Jump;
-        // HammerHit.Instance.hammerHitLeft += HammerLeft;
-        // HammerHit.Instance.hammerHitRight += HammerRight;
+        HammerHit.Instance.hammerHitLeft += HammerLeft;
+        HammerHit.Instance.hammerHitRight += HammerRight;
         respawn.action.started += Respawn;
     }
 
@@ -146,8 +146,8 @@ public class ArcadePlayer : MonoBehaviour
     {
         pause.action.performed -= Pause;
         jump.action.started -= Jump;
-        // HammerHit.Instance.hammerHitLeft -= HammerLeft;
-        // HammerHit.Instance.hammerHitRight -= HammerRight;
+        HammerHit.Instance.hammerHitLeft -= HammerLeft;
+        HammerHit.Instance.hammerHitRight -= HammerRight;
         respawn.action.started -= Respawn;
     }
 
@@ -166,39 +166,22 @@ public class ArcadePlayer : MonoBehaviour
     //     }
     // }
 
-    // public void HammerLeft(float strength)
-    // {
-    //     // first determine how much force was applied
-    //     if (strength > 20) // really strong swing, move it fully right no matter what
-    //     {
-    //         RightTilt();
-    //     }
-    //     else if (strength > 10) // move only by one stage
-    //     {
-    //         if (tiltState == TiltAmount.left)
-    //             DefaultTilt();
-    //         else
-    //             RightTilt();
-    //     }
-    //     // if it's less than 10, don't move at all as it wasn't a powerful enough swing
-    // }
+    public void HammerLeft(float strength)
+    {
+        Debug.Log("test");
+        if (tiltState == TiltAmount.left)
+            DefaultTilt();
+        else if (tiltState == TiltAmount.none)
+            RightTilt();
+    }
 
-    // public void HammerRight(float strength)
-    // {
-    //     // first determine how much force was applied
-    //     if (strength > 20) // really strong swing, move it fully left no matter what
-    //     {
-    //         LeftTilt();
-    //     }
-    //     else if (strength > 10) // move only by one stage
-    //     {
-    //         if (tiltState == TiltAmount.left)
-    //             DefaultTilt();
-    //         else
-    //             LeftTilt();
-    //     }
-    //     // if it's less than 10, don't move at all as it wasn't a powerful enough swing
-    // }
+    public void HammerRight(float strength)
+    {
+        if (tiltState == TiltAmount.right)
+            DefaultTilt();
+        else if (tiltState == TiltAmount.none)
+            LeftTilt();
+    }
 
     public void LeftTilt()
     {
