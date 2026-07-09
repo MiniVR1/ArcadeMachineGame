@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class CabinetTilt : MonoBehaviour
 {
-    [SerializeField] private ArcadePlayer player;
+    // [SerializeField] private ArcadePlayer player;
 
     private TiltAmount tiltState = TiltAmount.none;
 
@@ -12,10 +12,10 @@ public class CabinetTilt : MonoBehaviour
 
     public float animationTime = 0.05f;
 
-    void Awake()
-    {
-        player = FindAnyObjectByType<ArcadePlayer>();
-    }
+    // void Awake()
+    // {
+    //     player = FindAnyObjectByType<ArcadePlayer>();
+    // }
 
     private void OnEnable()
     {
@@ -28,12 +28,12 @@ public class CabinetTilt : MonoBehaviour
         if (tiltState == TiltAmount.left)
         {
             DefaultTilt();
-            player.DefaultTilt();
+            // player.DefaultTilt();
         }
         else if (tiltState == TiltAmount.none)
         {
             RightTilt();
-            player.RightTilt();
+            // player.RightTilt();
         }
     }
 
@@ -42,12 +42,12 @@ public class CabinetTilt : MonoBehaviour
         if (tiltState == TiltAmount.right)
         {
             DefaultTilt();
-            player.DefaultTilt();
+            // player.DefaultTilt();
         }
         else if (tiltState == TiltAmount.none)
         {
             LeftTilt();
-            player.LeftTilt();
+            // player.LeftTilt();
         }
     }
 
