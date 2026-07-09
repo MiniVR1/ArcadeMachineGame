@@ -9,16 +9,10 @@ public class TextButtonInteractions : MonoBehaviour, ISelectHandler, IDeselectHa
 
     public void OnSelect(BaseEventData eventData)
     {
-        if (UI_Manager.uiMenuNum == uiNumToActivateOn)
-        {
-            Debug.Log("selected");
-        }
+        Debug.Log("selected");
     }
     public void OnDeselect(BaseEventData eventData)
     {
-        if (UI_Manager.uiMenuNum == uiNumToActivateOn)
-        {
-            Debug.Log("de-selected");
-        }
+        Debug.Log("de-selected");
     }
 }
