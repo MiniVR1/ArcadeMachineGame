@@ -8,6 +8,7 @@ public class ZoomIn : InteractableObject
     public Vector3 zoomedInPos;
     private Vector3 cameraStartPos;
     private Coroutine coroutine;
+
     public override void OnInteract()
     {
         zoomedIn = !zoomedIn;
