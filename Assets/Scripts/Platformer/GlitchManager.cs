@@ -1,13 +1,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public class GlitchManager : MonoBehaviour
 {
-    public GlitchZone[] GlitchZones;
+
+    List<GlitchZone> glitchZones = new List<GlitchZone>();
 
     [SerializeField] private int currentGlitchZone; 
-
-    public GameObject GlitchZone1;
 
     GlitchZone script;
 
@@ -15,8 +15,8 @@ public class GlitchManager : MonoBehaviour
 
     void Start()
     {
-        GlitchZones = gameObject.GetComponentsInChildren<GlitchZone>();
-        foreach (GlitchZone child in GlitchZones)
+        glitchZones.AddRange(gameObject.GetComponentsInChildren<GlitchZone>());
+        foreach (GlitchZone glitches in glitchZones)
         {
             Debug.Log("I exist");
         }
@@ -35,7 +35,7 @@ public class GlitchManager : MonoBehaviour
 
     private void cycleGlitches()
     {
-        foreach (GlitchZone child in GlitchZones)
+        foreach (GlitchZone child in glitchZones)
         {
             script = (GlitchZone)child.GetComponent(typeof(GlitchZone));
             if (script.zone == currentGlitchZone)
@@ -47,7 +47,7 @@ public class GlitchManager : MonoBehaviour
                 script.GlitchDisable();
             }
         }
-        if (currentGlitchZone <= GlitchZones.Length-1)
+        if (currentGlitchZone <= glitchZones.Count-1)
         {
             currentGlitchZone++;
         }
