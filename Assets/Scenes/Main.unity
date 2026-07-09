@@ -2057,10 +2057,6 @@ PrefabInstance:
       propertyPath: eventSystem
       value: 
       objectReference: {fileID: 1216993511}
-    - target: {fileID: 7617929619553125023, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ZoomIn : InteractableObject
 {
-    private bool zoomedIn = false;
+    private bool zoomedIn = true;
     public Vector3 zoomedOutPos;
     public Vector3 zoomedInPos;
     private Vector3 cameraStartPos;

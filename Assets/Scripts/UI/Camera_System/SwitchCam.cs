@@ -30,6 +30,8 @@ public class SwitchCam : MonoBehaviour
             time += Time.deltaTime;
             yield return null;
         }
+        Camera.main.transform.localPosition = position;
+        Camera.main.transform.localRotation = Quaternion.Euler(rotation);
     }
 
 
