@@ -7,7 +7,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float smoothSpeed = 0.125f;
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -17,6 +17,6 @@ public class CameraFollow : MonoBehaviour
         {
             Vector3 desiredPosition = transform.position + offset;
             transform.position = desiredPosition;
-        } 
+        }
     }
 }

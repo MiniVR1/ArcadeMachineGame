@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3434079483659415164}
   m_Layer: 0
   m_Name: SledgehammerHandlePivot
-  m_TagString: Untagged
+  m_TagString: Pivot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,8 +42,8 @@ GameObject:
   - component: {fileID: 8615510959743851539}
   - component: {fileID: 6028866323350195740}
   - component: {fileID: 2331602251023102411}
-  - component: {fileID: 8103620315648936189}
   - component: {fileID: 185449086754698144}
+  - component: {fileID: 1381372757034871099}
   m_Layer: 0
   m_Name: Sledgehammer
   m_TagString: Untagged
@@ -59,7 +59,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4594498018718906283}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.63, y: 1.862, z: 3.79}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 1
@@ -111,27 +111,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2, y: 2, z: 0.2}
   m_Center: {x: 0, y: 0.95, z: 0}
---- !u!114 &8103620315648936189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4594498018718906283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 872731032d6488645919ac3684cc11fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HammerMovement
-  moveSpeed: 5
-  distance: 3.8
-  rb: {fileID: 185449086754698144}
-  pivots:
-  - {fileID: 0}
-  - {fileID: 0}
-  raycastMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!54 &185449086754698144
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -154,11 +133,31 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 112
-  m_CollisionDetection: 0
+  m_Constraints: 0
+  m_CollisionDetection: 2
+--- !u!114 &1381372757034871099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4594498018718906283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3feed159fcee36d47a054291649a3431, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewHammer
+  followSpeed: 15
+  swingSensitivity: 4
+  maxSwingAngle: 80
+  rotationSpeed: 20
+  grabPoint: {fileID: 0}
+  itemHitLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &7312681053619486227
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,3 +374,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HammerHit
   hammerRB: {fileID: 0}
+  lockedTime: 0.2
