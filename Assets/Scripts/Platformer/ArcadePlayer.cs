@@ -78,12 +78,8 @@ public class ArcadePlayer : MonoBehaviour
     {
         if (!isPaused)
         {
-            // Option A: Smoothly add force instead of forcing velocity (Best for physics tilt)
-            // This lets tilted gravity actually slide the player down the slope
             float targetVelocityX = -direction.x * moveSpeed;
             float velocityChangeX = targetVelocityX - body.linearVelocityX;
-
-            // Only override horizontal control, but allow gravity forces to bleed through
             body.AddForce(new Vector2(velocityChangeX * body.mass, 0f), ForceMode2D.Impulse);
         }
     }
@@ -107,8 +103,8 @@ public class ArcadePlayer : MonoBehaviour
     {
         pause.action.performed += Pause;
         jump.action.started += Jump;
-        HammerHit.Instance.hammerHitLeft += HammerLeft;
-        HammerHit.Instance.hammerHitRight += HammerRight;
+        HammerHit.Instance.hitLeft += HammerLeft;
+        HammerHit.Instance.hitRight += HammerRight;
         respawn.action.started += RespawnDebug;
     }
 
