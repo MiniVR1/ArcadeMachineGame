@@ -5,13 +5,12 @@ using System.Linq;
 
 public class NewItem : InteractableObject
 {
-    [SerializeField] protected float zDistance = 4f;
     [SerializeField] protected float followSpeed = 15f;
     [SerializeField] protected float swingSensitivity = 4f;
     [SerializeField] protected float maxSwingAngle = 80f;
     [SerializeField] protected float rotationSpeed = 20f;
     [SerializeField] protected Transform grabPoint;
-    [SerializeField] protected bool InUI = false;
+    // [SerializeField] protected bool InUI = false;
     [SerializeField] protected LayerMask itemHitLayer;
 
     protected Vector3 originPosition;
@@ -27,6 +26,8 @@ public class NewItem : InteractableObject
     protected Vector2 mouse = Vector2.zero;
     protected Vector2 previousMouse = Vector2.zero;
     protected Vector2 mouseDelta = Vector2.zero;
+
+    public bool IsHeld => state != State.Idle;
 
     protected enum State
     {
@@ -56,10 +57,10 @@ public class NewItem : InteractableObject
 
     void FixedUpdate()
     {
-        OnMovement();
+        CheckMouse();
         if (state != State.Idle)
         {
-            if (!Mouse.current.leftButton.IsPressed())
+            if (Mouse.current.rightButton.IsPressed())
             {
                 pendingRelease = true;
             }
@@ -73,13 +74,15 @@ public class NewItem : InteractableObject
             Ray ray = Camera.main.ScreenPointToRay(mousePos);
 
             if (Physics.Raycast(ray, out RaycastHit hit, 100, itemHitLayer))
+            {
                 world = hit.point;
+            }
             else
             {
                 world = Vector3.zero;
-                Debug.LogWarning("Item failed to collide with a quad! ensure there is a quad on layer 'hamerRaycast' or check with Cameron if issue persists");
+                Debug.LogWarning("Item failed to collide with a quad! ensure there is a quad on layer 'hammerRaycast' or check with Cameron if issue persists");
             }
-                
+
             // Rotate the local position of the pivot to the hammer's position
             Vector3 grabWorldOffset = rb.rotation * grabPoint.localPosition;
             Vector3 targetPosition = world - grabWorldOffset;
@@ -138,7 +141,7 @@ public class NewItem : InteractableObject
         return Quaternion.Euler(0f, 0f, tiltOffset) * uprightRotation;
     }
 
-    public void OnMovement()
+    private void CheckMouse()
     {
         previousMouse = mouse;
         mouse = Mouse.current.position.value;

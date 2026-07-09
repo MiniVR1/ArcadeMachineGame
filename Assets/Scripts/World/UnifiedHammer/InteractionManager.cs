@@ -21,7 +21,7 @@ public class InteractionManager : MonoBehaviour
                 if (interactable != null)
                 {
                     Cursor.SetCursor(grabCursor, Vector2.zero, CursorMode.Auto);
-                    
+
                     if (Mouse.current.leftButton.wasPressedThisFrame)
                     {
                         Debug.Log("Interacting with: " + interactable.gameObject.name);

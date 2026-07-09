@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 8615510959743851539}
   - component: {fileID: 6028866323350195740}
   - component: {fileID: 2331602251023102411}
-  - component: {fileID: 8103620315648936189}
   - component: {fileID: 185449086754698144}
   m_Layer: 0
   m_Name: Sledgehammer
@@ -111,27 +110,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.2, y: 2, z: 0.2}
   m_Center: {x: 0, y: 0.95, z: 0}
---- !u!114 &8103620315648936189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4594498018718906283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 872731032d6488645919ac3684cc11fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HammerMovement
-  moveSpeed: 5
-  distance: 3.8
-  rb: {fileID: 185449086754698144}
-  pivots:
-  - {fileID: 0}
-  - {fileID: 0}
-  raycastMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!54 &185449086754698144
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -375,3 +353,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HammerHit
   hammerRB: {fileID: 0}
+  lockedTime: 0.2
