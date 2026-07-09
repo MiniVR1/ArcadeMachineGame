@@ -60,9 +60,9 @@ public class NewBaseball : NewItem
 
     public override void OnInteract()
     {
-        if (state == State.Idle) // just for redundancy, ensure this only can be called in a reasonable state
+        if (state == State.Idle)
         {
-            // setup the item into a state where it can be manipulated correctly
+            current = this;
             state = State.Hold;
 
             rb.rotation = uprightRotation;

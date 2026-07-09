@@ -1,35 +1,46 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Linq;
 
 public class InteractionManager : MonoBehaviour
 {
     public Texture2D grabCursor;
 
-    // Update is called once per frame
     void Update()
     {
         Vector3 mousePos = Mouse.current.position.ReadValue();
-
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
 
         RaycastHit[] hits = Physics.RaycastAll(ray, 10);
-        if (hits.Length > 0)
-        {
-            foreach (RaycastHit hit in hits)
-            {
-                InteractableObject interactable = hit.collider.GetComponent<InteractableObject>();
-                if (interactable != null)
-                {
-                    Cursor.SetCursor(grabCursor, Vector2.zero, CursorMode.Auto);
+        var sortedHits = hits.OrderBy(h => h.distance);
 
-                    if (Mouse.current.leftButton.wasPressedThisFrame)
-                    {
-                        Debug.Log("Interacting with: " + interactable.gameObject.name);
-                        interactable.OnInteract();
-                    }
-                    return; // only find the first interactable thing and skip resetting the cursor
+        bool hoveringInteractable = false;
+
+        foreach (RaycastHit hit in sortedHits)
+        {
+            InteractableObject interactable = hit.collider.GetComponent<InteractableObject>();
+            if (interactable != null)
+            {
+                if (NewItem.current != null && interactable.gameObject != NewItem.current.gameObject)
+                {
+                    interactable = NewItem.current;
                 }
+
+                Cursor.SetCursor(grabCursor, Vector2.zero, CursorMode.Auto);
+                hoveringInteractable = true;
+
+                if (Mouse.current.leftButton.wasPressedThisFrame)
+                {
+                    Debug.Log("Interacting with: " + interactable.gameObject.name);
+                    interactable.OnInteract();
+                }
+
+                break;
             }
+        }
+
+        if (!hoveringInteractable)
+        {
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
         }
     }

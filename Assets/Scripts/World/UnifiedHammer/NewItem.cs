@@ -27,7 +27,7 @@ public class NewItem : InteractableObject
     protected Vector2 previousMouse = Vector2.zero;
     protected Vector2 mouseDelta = Vector2.zero;
 
-    public bool IsHeld => state != State.Idle;
+    public static NewItem current { get; protected set; }
 
     protected enum State
     {
@@ -119,6 +119,7 @@ public class NewItem : InteractableObject
         if (pendingRelease)
         {
             pendingRelease = false;
+            current = null;
             state = State.Idle;
 
             rb.position = originPosition;
@@ -152,6 +153,7 @@ public class NewItem : InteractableObject
     {
         if (state == State.Idle) // just for redundancy, ensure this only can be called in a reasonable state
         {
+            current = this;
             // setup the item into a state where it can be manipulated correctly
             state = State.Hold;
 

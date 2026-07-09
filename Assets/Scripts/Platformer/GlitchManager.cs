@@ -7,7 +7,7 @@ public class GlitchManager : MonoBehaviour
 
     List<GlitchZone> glitchZones = new List<GlitchZone>();
 
-    [SerializeField] private int currentGlitchZone; 
+    [SerializeField] private int currentGlitchZone;
 
     GlitchZone script;
 
@@ -30,7 +30,7 @@ public class GlitchManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void cycleGlitches()
