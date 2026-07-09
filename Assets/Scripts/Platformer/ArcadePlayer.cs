@@ -13,6 +13,8 @@ public class ArcadePlayer : MonoBehaviour
     [SerializeField] private float jumpHeight = 3.0f;
     private float raycastDistance;
 
+    private int lives;
+
     private Vector2 direction;
     [SerializeField] private Vector3 leftTilt = new Vector3(2.0f, -9.81f, 0f);
     [SerializeField] private Vector3 rightTilt = new Vector3(-2.0f, 0f, 0f);
@@ -23,6 +25,7 @@ public class ArcadePlayer : MonoBehaviour
     private Vector3 castOffset;
     private Vector3 currentTilt;
     private Vector3 initialPosition;
+    private Vector3 respawnPosition;
 
     public bool isPaused; // Making this public so I can manipulate this from the UI_Nav - Evan
 
@@ -46,9 +49,12 @@ public class ArcadePlayer : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
         initialPosition = transform.position + new Vector3(0f, 5.0f, 0f);
+        respawnPosition = initialPosition;
         castOffset = new Vector3(collider.bounds.extents.x, 0.0f, 0.0f);
         raycastDistance = collider.bounds.extents.y + 0.1f;
         isPaused = false;
+
+        lives = 3; // Connect to a game manager
 
         // Temp Setting for when UI is found and active - Evan
         if (uiReference != null)
@@ -98,12 +104,12 @@ public class ArcadePlayer : MonoBehaviour
         jump.action.started += Jump;
         // HammerHit.Instance.hammerHitLeft += HammerLeft;
         // HammerHit.Instance.hammerHitRight += HammerRight;
-        respawn.action.started += Respawn;
+        respawn.action.started += RespawnDebug;
     }
 
     private void Jump(InputAction.CallbackContext context)
     {
-        if ((IsGroundedCentre()|| IsGroundedRight() || IsGroundedLeft()) && !isPaused)
+        if ((IsGroundedCentre() || IsGroundedRight() || IsGroundedLeft()) && !isPaused)
         {
             body.linearVelocityY += jumpHeight;
         }
@@ -148,7 +154,7 @@ public class ArcadePlayer : MonoBehaviour
         jump.action.started -= Jump;
         // HammerHit.Instance.hammerHitLeft -= HammerLeft;
         // HammerHit.Instance.hammerHitRight -= HammerRight;
-        respawn.action.started -= Respawn;
+        respawn.action.started -= RespawnDebug;
     }
 
     // private void OnCollisionEnter2D(Collision2D collision)
@@ -238,9 +244,37 @@ public class ArcadePlayer : MonoBehaviour
     }
     */
 
-    private void Respawn(InputAction.CallbackContext context)
+    private void RespawnDebug(InputAction.CallbackContext context)
     {
-        transform.position = initialPosition;
+        transform.position = respawnPosition;
+    }
+
+    private void Respawn()
+    {
+        transform.position = respawnPosition;
+    }
+
+    private void Death()
+    {
+        if (lives >= 0)
+        {
+            lives--;
+            Respawn();
+        }
+        else
+        {
+            GameOver();
+        }
+    }
+
+    private void GameOver()
+    {
+        Debug.Log("Game Over!");
+    }
+
+    public void SetRespawn(Vector3 newLoc)
+    {
+        respawnPosition = newLoc;
     }
 }
 

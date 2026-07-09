@@ -1,15 +1,15 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class GlitchZone : MonoBehaviour
 {
     public int zone;
-    public Glitches[] GlitchList;
 
-    Glitches script;
+    List<Glitches> glitches = new List<Glitches>();
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        glitches.AddRange(gameObject.GetComponentsInChildren<Glitches>());
     }
 
     // Update is called once per frame
@@ -25,21 +25,17 @@ public class GlitchZone : MonoBehaviour
 
     public void GlitchEnable(int zone)
     {
-        GlitchList = gameObject.GetComponentsInChildren<Glitches>();
-        foreach (Glitches child in GlitchList)
+        foreach (Glitches child in glitches)
         {
-            script = (Glitches)child.GetComponent(typeof(Glitches));
-            script.EnableGlitch(zone);
+            child.EnableGlitch(zone);
         }
     }
 
     public void GlitchDisable()
     {
-        GlitchList = gameObject.GetComponentsInChildren<Glitches>();
-        foreach (Glitches child in GlitchList)
+        foreach (Glitches child in glitches)
         {
-            script = (Glitches)child.GetComponent(typeof(Glitches));
-            script.DisableGlitch();
+            child.DisableGlitch();
         }
     }
 }
