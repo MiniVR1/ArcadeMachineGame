@@ -11,14 +11,14 @@ public class ArcadePlayer : MonoBehaviour
 
     [SerializeField] private float moveSpeed = 5.0f;
     [SerializeField] private float jumpHeight = 3.0f;
+    [SerializeField] private float slideSpeed = 100f;
     private float raycastDistance;
 
     private int lives;
 
     private Vector2 direction;
-    [SerializeField] private Vector3 leftTilt = new Vector3(2.0f, -9.81f, 0f);
-    [SerializeField] private Vector3 rightTilt = new Vector3(-2.0f, 0f, 0f);
-    [SerializeField] private Vector3 noTilt = new Vector3(0f, 0f, 0f);
+    [SerializeField] private float tiltAngle = 10f;
+    [SerializeField] private float gravityMagnitude = 9.81f;
     [SerializeField] private Vector3 leftCameraTilt = new Vector3(0f, 180f, -10f);
     [SerializeField] private Vector3 rightCameraTilt = new Vector3(0f, 180f, 10f);
     [SerializeField] private Vector3 defaultCameraTilt = new Vector3(0f, 180f, 0f);
@@ -47,6 +47,7 @@ public class ArcadePlayer : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        Physics2D.gravity = new Vector2(0f, -gravityMagnitude);
         collider = GetComponent<BoxCollider2D>();
         initialPosition = transform.position + new Vector3(0f, 5.0f, 0f);
         respawnPosition = initialPosition;
@@ -73,13 +74,17 @@ public class ArcadePlayer : MonoBehaviour
         direction = move.action.ReadValue<Vector2>();
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         if (!isPaused)
         {
-            body.linearVelocityX = -direction.x * moveSpeed;
-            Debug.DrawRay(transform.position, Vector3.down * 10, Color.red);
-            body.AddForce(currentTilt);
+            // Option A: Smoothly add force instead of forcing velocity (Best for physics tilt)
+            // This lets tilted gravity actually slide the player down the slope
+            float targetVelocityX = -direction.x * moveSpeed;
+            float velocityChangeX = targetVelocityX - body.linearVelocityX;
+
+            // Only override horizontal control, but allow gravity forces to bleed through
+            body.AddForce(new Vector2(velocityChangeX * body.mass, 0f), ForceMode2D.Impulse);
         }
     }
 
@@ -198,22 +203,25 @@ public class ArcadePlayer : MonoBehaviour
 
     public void LeftTilt()
     {
-        currentTilt = leftTilt;
         camera.transform.rotation = Quaternion.Euler(leftCameraTilt);
         tiltState = TiltAmount.left;
+        Physics2D.gravity = Quaternion.Euler(0f, 0f, tiltAngle) * Physics2D.gravity;
+        Physics2D.gravity = new Vector2(Physics2D.gravity.x * slideSpeed, Physics2D.gravity.y);
     }
 
     public void RightTilt()
     {
-        currentTilt = rightTilt;
         camera.transform.rotation = Quaternion.Euler(rightCameraTilt);
         tiltState = TiltAmount.right;
+        Physics2D.gravity = Quaternion.Euler(0f, 0f, -tiltAngle) * Physics2D.gravity;
+        Physics2D.gravity = new Vector2(Physics2D.gravity.x * slideSpeed, Physics2D.gravity.y);
     }
+
     public void DefaultTilt()
     {
-        currentTilt = noTilt;
         camera.transform.rotation = Quaternion.Euler(defaultCameraTilt);
         tiltState = TiltAmount.none;
+        Physics2D.gravity = new Vector2(0f, -gravityMagnitude);
     }
 
     private void RespawnDebug(InputAction.CallbackContext context)

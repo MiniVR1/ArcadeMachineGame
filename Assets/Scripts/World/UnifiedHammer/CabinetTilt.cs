@@ -3,19 +3,12 @@ using UnityEngine;
 
 public class CabinetTilt : MonoBehaviour
 {
-    // [SerializeField] private ArcadePlayer player;
-
     private TiltAmount tiltState = TiltAmount.none;
 
     public float tiltLeft;
     public float tiltRight;
 
     public float animationTime = 0.05f;
-
-    // void Awake()
-    // {
-    //     player = FindAnyObjectByType<ArcadePlayer>();
-    // }
 
     private void OnEnable()
     {
@@ -28,12 +21,10 @@ public class CabinetTilt : MonoBehaviour
         if (tiltState == TiltAmount.left)
         {
             DefaultTilt();
-            // player.DefaultTilt();
         }
         else if (tiltState == TiltAmount.none)
         {
             RightTilt();
-            // player.RightTilt();
         }
     }
 
@@ -42,12 +33,10 @@ public class CabinetTilt : MonoBehaviour
         if (tiltState == TiltAmount.right)
         {
             DefaultTilt();
-            // player.DefaultTilt();
         }
         else if (tiltState == TiltAmount.none)
         {
             LeftTilt();
-            // player.LeftTilt();
         }
     }
 
@@ -79,7 +68,7 @@ public class CabinetTilt : MonoBehaviour
         {
             // smoothly lerp the rotation to the desired point over time
             transform.localRotation = Quaternion.Euler(Mathf.Lerp(0, angle, time), 0, 0);
-                time += Time.deltaTime / animationTime;
+            time += Time.deltaTime / animationTime;
             yield return null;
         }
     }
