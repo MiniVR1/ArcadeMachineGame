@@ -10,7 +10,6 @@ public class NewItem : InteractableObject
     [SerializeField] protected float maxSwingAngle = 80f;
     [SerializeField] protected float rotationSpeed = 20f;
     [SerializeField] protected Transform grabPoint;
-    // [SerializeField] protected bool InUI = false;
     [SerializeField] protected LayerMask itemHitLayer;
 
     protected Vector3 originPosition;

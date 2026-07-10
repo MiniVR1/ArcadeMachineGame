@@ -45,6 +45,8 @@ GameObject:
   - component: {fileID: 5275324726796704648}
   - component: {fileID: 1597669172975537861}
   - component: {fileID: 4825221588417555081}
+  - component: {fileID: 7965697050830540664}
+  - component: {fileID: 7375677216170247906}
   m_Layer: 0
   m_Name: Baseball
   m_TagString: Untagged
@@ -198,3 +200,39 @@ MonoBehaviour:
   maxBatAngle: 70
   batVelocity: 500
   recoverSpeed: 250
+--- !u!136 &7965697050830540664
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4596036527072431701}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.75
+  m_Height: 2.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7375677216170247906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4596036527072431701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ff12a33a71b5564b9027f6f7f59edb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BaseballHit
+  lockedTime: 0.2
