@@ -8,14 +8,15 @@ public class SwitchCam : MonoBehaviour
     public CameraPositions[] cameraPositions;
     private Vector3 cameraStartPos;
     private Vector3 cameraRotation;
-
-    public Canvas canvas;
+    public GameObject canvasObject;
+    public InteractionManager interactionManager;
 
     public void SwitchToCamera(int cameraPos)
     {
         StopAllCoroutines();
         StartCoroutine(ZoomToPosition(cameraPositions[cameraPos].position, cameraPositions[cameraPos].rotation));
-        canvas.enabled = false;
+        interactionManager.enabled = true;
+        canvasObject.SetActive(false);
     }
 
     private IEnumerator ZoomToPosition(Vector3 position, Vector3 rotation)
