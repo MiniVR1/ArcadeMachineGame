@@ -108,6 +108,7 @@ public class ArcadePlayer : MonoBehaviour
         HammerHit.Instance.hitRight += HammerRight;
         BaseballHit.Instance.hitJumpButton += BuffJump;
         respawn.action.started += RespawnDebug;
+        Killzone.entered += OnPlayerKilled;
     }
 
     private void Jump(InputAction.CallbackContext context)
@@ -178,7 +179,7 @@ public class ArcadePlayer : MonoBehaviour
     //     }
     // }
 
-    public void HammerLeft()
+    private void HammerLeft()
     {
         if (tiltState == TiltAmount.left)
         {
@@ -190,7 +191,7 @@ public class ArcadePlayer : MonoBehaviour
         }
     }
 
-    public void HammerRight()
+    private void HammerRight()
     {
         if (tiltState == TiltAmount.right)
         {
@@ -226,11 +227,20 @@ public class ArcadePlayer : MonoBehaviour
     }
 
     // NOTE: sets one super jump for player
-    public void BuffJump()
+    private void BuffJump()
     {
         Debug.Log("buffed jump");
         superJumpBuff = true;
     }
+
+    private void OnPlayerKilled(GameObject player)
+    {
+        if (player == gameObject)
+        {
+            Death();
+        }
+    }
+
 
     private void RespawnDebug(InputAction.CallbackContext context)
     {
