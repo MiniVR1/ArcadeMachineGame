@@ -4538,6 +4538,10 @@ PrefabInstance:
       propertyPath: uiReference
       value: 
       objectReference: {fileID: 1815641355}
+    - target: {fileID: 9116821610773696857, guid: 4542fdd9af2ec2b4dbdda4f469468e42, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
