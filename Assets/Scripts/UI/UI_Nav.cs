@@ -9,6 +9,7 @@ public class UI_Nav : MonoBehaviour
     public GameObject selectLevelMenu;
     public GameObject optionsMenu;
     public GameObject escapeMenu;
+    public GameObject StartingScreen;
 
     [Header("Setup")]
     public Selectable startButton;
@@ -91,6 +92,12 @@ public class UI_Nav : MonoBehaviour
         isInStartMenu = true;
         escapeMenu.SetActive(false);
         startMenu.SetActive(true);
+        JumpToElement(startButton);
+    }
+
+    public void StopAnimation()
+    {
+        StartingScreen.SetActive(false);
         JumpToElement(startButton);
     }
 
