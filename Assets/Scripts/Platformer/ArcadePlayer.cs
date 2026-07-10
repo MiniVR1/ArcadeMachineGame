@@ -11,16 +11,17 @@ public class ArcadePlayer : MonoBehaviour
 
     [SerializeField] private float moveSpeed = 5.0f;
     [SerializeField] private float jumpHeight = 3.0f;
+    [SerializeField] private float superJumpHeightScale = 2f;
     [SerializeField] private float slideSpeed = 100f;
     private float raycastDistance;
 
     private int lives;
 
     private Vector2 direction;
-    [SerializeField] private float tiltAngle = 10f;
+    [SerializeField] private static float tiltAngle = 10f;
     [SerializeField] private float gravityMagnitude = 9.81f;
-    [SerializeField] private Vector3 leftCameraTilt = new Vector3(0f, 180f, -10f);
-    [SerializeField] private Vector3 rightCameraTilt = new Vector3(0f, 180f, 10f);
+    [SerializeField] private Vector3 leftCameraTilt = new Vector3(0f, 180f, -tiltAngle);
+    [SerializeField] private Vector3 rightCameraTilt = new Vector3(0f, 180f, tiltAngle);
     [SerializeField] private Vector3 defaultCameraTilt = new Vector3(0f, 180f, 0f);
     private Vector3 castOffset;
     private Vector3 currentTilt;
@@ -40,6 +41,7 @@ public class ArcadePlayer : MonoBehaviour
     RaycastHit jumpCast;
 
     [SerializeField] private bool canJump = true;
+    private bool superJumpBuff = false;
 
     public TiltAmount tiltState = TiltAmount.none;
 
@@ -62,10 +64,9 @@ public class ArcadePlayer : MonoBehaviour
         {
             isPaused = true;
         }
-        //
 
-        Debug.Log(pause);
-        Debug.Log(pause.action);
+        // Debug.Log(pause);
+        // Debug.Log(pause.action);
     }
 
     // Update is called once per frame
@@ -105,6 +106,7 @@ public class ArcadePlayer : MonoBehaviour
         jump.action.started += Jump;
         HammerHit.Instance.hitLeft += HammerLeft;
         HammerHit.Instance.hitRight += HammerRight;
+        BaseballHit.Instance.hitJumpButton += BuffJump;
         respawn.action.started += RespawnDebug;
     }
 
@@ -112,12 +114,17 @@ public class ArcadePlayer : MonoBehaviour
     {
         if ((IsGroundedCentre() || IsGroundedRight() || IsGroundedLeft()) && !isPaused)
         {
-            body.linearVelocityY += jumpHeight;
+            float newJumpHeight = jumpHeight;
+            if (superJumpBuff)
+            {
+                newJumpHeight *= superJumpHeightScale;
+                superJumpBuff = false;
+            }
+            body.linearVelocityY += newJumpHeight;
         }
         else
         {
             Debug.Log("Can't Jump!");
-            return;
         }
     }
 
@@ -153,8 +160,6 @@ public class ArcadePlayer : MonoBehaviour
     {
         pause.action.performed -= Pause;
         jump.action.started -= Jump;
-        // HammerHit.Instance.hammerHitLeft -= HammerLeft;
-        // HammerHit.Instance.hammerHitRight -= HammerRight;
         respawn.action.started -= RespawnDebug;
     }
 
@@ -173,7 +178,7 @@ public class ArcadePlayer : MonoBehaviour
     //     }
     // }
 
-    public void HammerLeft(float strength)
+    public void HammerLeft()
     {
         if (tiltState == TiltAmount.left)
         {
@@ -185,7 +190,7 @@ public class ArcadePlayer : MonoBehaviour
         }
     }
 
-    public void HammerRight(float strength)
+    public void HammerRight()
     {
         if (tiltState == TiltAmount.right)
         {
@@ -218,6 +223,13 @@ public class ArcadePlayer : MonoBehaviour
         camera.transform.rotation = Quaternion.Euler(defaultCameraTilt);
         tiltState = TiltAmount.none;
         Physics2D.gravity = new Vector2(0f, -gravityMagnitude);
+    }
+
+    // NOTE: sets one super jump for player
+    public void BuffJump()
+    {
+        Debug.Log("buffed jump");
+        superJumpBuff = true;
     }
 
     private void RespawnDebug(InputAction.CallbackContext context)

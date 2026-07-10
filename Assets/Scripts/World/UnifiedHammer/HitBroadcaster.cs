@@ -6,7 +6,7 @@ public class HitBroadcaster : MonoBehaviour
     public float lockedTime = 0.2f;
     private bool hammerLocked = false;
 
-    public delegate void HasHit(float hitStrength);
+    public delegate void HasHit();
 
 
     // Create 3 lists of delegates so that other scripts can listen to when a hammer swing is detected.
@@ -15,6 +15,7 @@ public class HitBroadcaster : MonoBehaviour
     public HasHit hitRight;
     public HasHit hitTop;
     public HasHit hitConsole;
+    public HasHit hitJumpButton;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -42,6 +43,11 @@ public class HitBroadcaster : MonoBehaviour
                         StartCoroutine(CallHammerHit(hitConsole));
                         break;
                     }
+                case "JumpButton":
+                    {
+                        StartCoroutine(CallHammerHit(hitJumpButton));
+                        break;
+                    }
             }
     }
 
@@ -53,10 +59,10 @@ public class HitBroadcaster : MonoBehaviour
         // after 1 frame find out how far the hammer has travelled
         Vector3 endPos = transform.position;
         float speed = (startPos - endPos).magnitude / Time.deltaTime;
-        Debug.Log("Hit at " + speed + " units of speed");
-        Debug.Log(list);
+        // Debug.Log("Hit at " + speed + " units of speed");
+        // Debug.Log(list);
         if (list != null)
-            list(speed);
+            list();
         // then leave the hammer locked until the lockedTime expires
         yield return new WaitForSeconds(lockedTime);
         hammerLocked = false;

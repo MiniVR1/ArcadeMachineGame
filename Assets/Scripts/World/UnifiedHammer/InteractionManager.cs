@@ -31,7 +31,7 @@ public class InteractionManager : MonoBehaviour
 
                 if (Mouse.current.leftButton.wasPressedThisFrame)
                 {
-                    Debug.Log("Interacting with: " + interactable.gameObject.name);
+                    // Debug.Log("Interacting with: " + interactable.gameObject.name);
                     interactable.OnInteract();
                 }
 
