@@ -1,6 +1,3 @@
-using System;
-using UnityEngine;
-
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,7 +20,6 @@ public class Door : MonoBehaviour
                     return;
                 }
             }
-
 
             foreach (KeyType key in requiredKeys)
             {

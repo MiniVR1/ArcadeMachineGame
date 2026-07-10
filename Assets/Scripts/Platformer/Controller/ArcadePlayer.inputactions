@@ -16,42 +16,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Move",
-                    "type": "PassThrough",
-                    "id": "00169390-cff5-462e-913c-a9ed41767013",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "TiltLeft",
-                    "type": "Button",
-                    "id": "f45c360c-f1f8-4af6-a95e-1f717f27b930",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "TiltRight",
-                    "type": "Button",
-                    "id": "c71a1ed6-a775-4d77-b1db-ce9442e751d1",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "TiltReset",
-                    "type": "Button",
-                    "id": "20e32310-10c0-4796-a2e7-d73f162babdf",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Respawn",
                     "type": "Button",
                     "id": "3b2189af-4e81-499c-976f-80720c4ea1ac",
@@ -77,6 +41,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "f67d3827-dd79-4184-bea1-a225a56de999",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -88,72 +61,6 @@
                     "processors": "",
                     "groups": ";ArcadeControls",
                     "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "2D Vector",
-                    "id": "337385cf-5f3d-43df-91c0-3a65ba3f399f",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "left",
-                    "id": "2e95a545-9c98-49d5-b487-e8892d035114",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "ebfef259-d1a4-440a-a6c7-126e3f5fa255",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "9983f67a-3cfa-4965-8348-53060a53031d",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";ArcadeControls",
-                    "action": "TiltLeft",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8b6b338e-15c3-4964-a0d4-23ee12e07538",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";ArcadeControls",
-                    "action": "TiltRight",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "dc5e2862-7f1a-4af8-a6a9-8a949ca382bc",
-                    "path": "<Keyboard>/r",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";ArcadeControls",
-                    "action": "TiltReset",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -191,15 +98,37 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "b9e67a59-e26e-4f07-b23c-4cbcb65a5252",
-                    "path": "<Keyboard>/p",
+                    "name": "1D Axis",
+                    "id": "bb34a762-ee30-4ba2-ad3f-bddc9d64b597",
+                    "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";ArcadeControls",
-                    "action": "Pause",
-                    "isComposite": false,
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "9f839d26-ef54-4405-a250-7c1f9ca584fc",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "01acc138-6b2b-40db-90ea-c283b22aff25",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

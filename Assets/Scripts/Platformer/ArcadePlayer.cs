@@ -18,7 +18,7 @@ public class ArcadePlayer : MonoBehaviour
 
     private int lives;
 
-    private Vector2 direction;
+    private Vector2 direction = Vector2.zero;
     [SerializeField] private static float tiltAngle = 10f;
     [SerializeField] private float gravityMagnitude = 9.81f;
     [SerializeField] private Vector3 leftCameraTilt = new Vector3(0f, 180f, -tiltAngle);
@@ -31,13 +31,10 @@ public class ArcadePlayer : MonoBehaviour
 
     public bool isPaused; // Making this public so I can manipulate this from the UI_Nav - Evan
 
-    public InputActionReference move;
-    public InputActionReference jump;
-    public InputActionReference tiltLeft;
-    public InputActionReference tiltRight;
-    public InputActionReference tiltReset;
+    // public InputActionReference tiltLeft;
+    // public InputActionReference tiltRight;
+    // public InputActionReference tiltReset;
     public InputActionReference respawn;
-    public InputActionReference pause;
 
     RaycastHit jumpCast;
 
@@ -47,10 +44,12 @@ public class ArcadePlayer : MonoBehaviour
     public TiltAmount tiltState = TiltAmount.none;
 
     private HashSet<KeyType> keys = new();
+    private Animator animator;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        animator = GetComponent<Animator>();
         body = GetComponent<Rigidbody2D>();
         Physics2D.gravity = new Vector2(0f, -gravityMagnitude);
         collider = GetComponent<BoxCollider2D>();
@@ -67,15 +66,6 @@ public class ArcadePlayer : MonoBehaviour
         {
             isPaused = true;
         }
-
-        // Debug.Log(pause);
-        // Debug.Log(pause.action);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        direction = move.action.ReadValue<Vector2>();
     }
 
     void FixedUpdate()
@@ -86,6 +76,11 @@ public class ArcadePlayer : MonoBehaviour
             float velocityChangeX = targetVelocityX - body.linearVelocityX;
             body.AddForce(new Vector2(velocityChangeX * body.mass, 0f), ForceMode2D.Impulse);
         }
+    }
+
+    public void OnMove(InputValue value)
+    {
+        direction.x = value.Get<float>();
     }
 
     public bool HasKey(KeyType key)
@@ -115,8 +110,6 @@ public class ArcadePlayer : MonoBehaviour
 
     private void OnEnable()
     {
-        pause.action.performed += Pause;
-        jump.action.started += Jump;
         HammerHit.Instance.hitLeft += HammerLeft;
         HammerHit.Instance.hitRight += HammerRight;
         BaseballHit.Instance.hitJumpButton += BuffJump;
@@ -125,7 +118,7 @@ public class ArcadePlayer : MonoBehaviour
         Key.grabbed += OnKeyGrabbed;
     }
 
-    private void Jump(InputAction.CallbackContext context)
+    public void OnJump()
     {
         if ((IsGroundedCentre() || IsGroundedRight() || IsGroundedLeft()) && !isPaused)
         {
@@ -143,9 +136,10 @@ public class ArcadePlayer : MonoBehaviour
         }
     }
 
-    private void Pause(InputAction.CallbackContext context)
+    public void OnPause()
     {
-        if (uiReference != null)        // This prevents a situation where pause won't work where the UI is not implemented yet - Evan
+        // This prevents a situation where pause won't work where the UI is not implemented yet - Evan
+        if (uiReference != null)
         {
             if (!uiReference.isInStartMenu && !uiReference.escapeMenu.activeSelf && !uiReference.optionsMenu.activeSelf)
             {
@@ -173,8 +167,6 @@ public class ArcadePlayer : MonoBehaviour
 
     private void OnDisable()
     {
-        pause.action.performed -= Pause;
-        jump.action.started -= Jump;
         respawn.action.started -= RespawnDebug;
         Killzone.entered -= OnPlayerKilled;
         Key.grabbed -= OnKeyGrabbed;
