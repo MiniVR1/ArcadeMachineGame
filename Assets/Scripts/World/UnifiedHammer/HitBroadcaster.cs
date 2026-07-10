@@ -54,13 +54,6 @@ public class HitBroadcaster : MonoBehaviour
     private IEnumerator CallItemHit(HasHit list)
     {
         itemLocked = true;
-        Vector3 startPos = transform.position;
-        yield return null;
-        // after 1 frame find out how far the item has travelled
-        Vector3 endPos = transform.position;
-        float speed = (startPos - endPos).magnitude / Time.deltaTime;
-        // Debug.Log("Hit at " + speed + " units of speed");
-        // Debug.Log(list);
         if (list != null)
             list();
         // then leave the item locked until the lockedTime expires
