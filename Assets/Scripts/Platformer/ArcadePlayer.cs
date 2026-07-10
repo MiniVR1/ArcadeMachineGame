@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public class ArcadePlayer : MonoBehaviour
 {
@@ -45,6 +46,8 @@ public class ArcadePlayer : MonoBehaviour
 
     public TiltAmount tiltState = TiltAmount.none;
 
+    private HashSet<KeyType> keys = new();
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -85,6 +88,16 @@ public class ArcadePlayer : MonoBehaviour
         }
     }
 
+    public bool HasKey(KeyType key)
+    {
+        return keys.Contains(key);
+    }
+
+    public void RemoveKey(KeyType key)
+    {
+        keys.Remove(key);
+    }
+
     private bool IsGroundedCentre()
     {
         return Physics2D.Raycast(transform.position, Vector3.down, raycastDistance, LayerMask.GetMask("Platform"));
@@ -109,6 +122,7 @@ public class ArcadePlayer : MonoBehaviour
         BaseballHit.Instance.hitJumpButton += BuffJump;
         respawn.action.started += RespawnDebug;
         Killzone.entered += OnPlayerKilled;
+        Key.grabbed += OnKeyGrabbed;
     }
 
     private void Jump(InputAction.CallbackContext context)
@@ -162,6 +176,8 @@ public class ArcadePlayer : MonoBehaviour
         pause.action.performed -= Pause;
         jump.action.started -= Jump;
         respawn.action.started -= RespawnDebug;
+        Killzone.entered -= OnPlayerKilled;
+        Key.grabbed -= OnKeyGrabbed;
     }
 
     // private void OnCollisionEnter2D(Collision2D collision)
@@ -241,6 +257,13 @@ public class ArcadePlayer : MonoBehaviour
         }
     }
 
+    private void OnKeyGrabbed(Key key, GameObject player)
+    {
+        if (player == gameObject)
+        {
+            keys.Add(key.type);
+        }
+    }
 
     private void RespawnDebug(InputAction.CallbackContext context)
     {
