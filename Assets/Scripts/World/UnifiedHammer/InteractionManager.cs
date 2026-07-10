@@ -8,6 +8,7 @@ public class InteractionManager : MonoBehaviour
 
     void Update()
     {
+        HandleItemPhysicsState();
         Vector3 mousePos = Mouse.current.position.ReadValue();
         Ray ray = Camera.main.ScreenPointToRay(mousePos);
 
@@ -31,7 +32,6 @@ public class InteractionManager : MonoBehaviour
 
                 if (Mouse.current.leftButton.wasPressedThisFrame)
                 {
-                    // Debug.Log("Interacting with: " + interactable.gameObject.name);
                     interactable.OnInteract();
                 }
 
@@ -42,6 +42,27 @@ public class InteractionManager : MonoBehaviour
         if (!hoveringInteractable)
         {
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        }
+    }
+
+    private void HandleItemPhysicsState()
+    {
+        bool holdingSomething = NewItem.current != null;
+        NewItem[] allItems = FindObjectsByType<NewItem>();
+
+        foreach (NewItem item in allItems)
+        {
+            if (item.TryGetComponent<Rigidbody>(out Rigidbody rb))
+            {
+                if (holdingSomething && item == NewItem.current)
+                {
+                    rb.isKinematic = false;
+                }
+                else
+                {
+                    rb.isKinematic = holdingSomething;
+                }
+            }
         }
     }
 }
