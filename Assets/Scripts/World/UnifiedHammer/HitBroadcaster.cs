@@ -6,7 +6,7 @@ public class HitBroadcaster : MonoBehaviour
     public float lockedTime = 0.2f;
     private bool hammerLocked = false;
 
-    public delegate void HasHit(float hitStrength);
+    public delegate void HasHit();
 
 
     // Create 3 lists of delegates so that other scripts can listen to when a hammer swing is detected.
@@ -48,15 +48,8 @@ public class HitBroadcaster : MonoBehaviour
     private IEnumerator CallHammerHit(HasHit list)
     {
         hammerLocked = true;
-        Vector3 startPos = transform.position;
-        yield return null;
-        // after 1 frame find out how far the hammer has travelled
-        Vector3 endPos = transform.position;
-        float speed = (startPos - endPos).magnitude / Time.deltaTime;
-        Debug.Log("Hit at " + speed + " units of speed");
-        Debug.Log(list);
         if (list != null)
-            list(speed);
+            list();
         // then leave the hammer locked until the lockedTime expires
         yield return new WaitForSeconds(lockedTime);
         hammerLocked = false;

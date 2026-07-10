@@ -16,7 +16,7 @@ public class CabinetTilt : MonoBehaviour
         HammerHit.Instance.hitRight += HammerCabinetRight;
     }
 
-    public void HammerCabinetLeft(float strength)
+    public void HammerCabinetLeft()
     {
         if (tiltState == TiltAmount.left)
         {
@@ -28,7 +28,7 @@ public class CabinetTilt : MonoBehaviour
         }
     }
 
-    public void HammerCabinetRight(float strength)
+    public void HammerCabinetRight()
     {
         if (tiltState == TiltAmount.right)
         {

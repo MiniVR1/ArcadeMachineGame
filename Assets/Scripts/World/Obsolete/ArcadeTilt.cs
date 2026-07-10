@@ -103,7 +103,7 @@ public class ArcadeTilt : MonoBehaviour
         }
     }
 
-    private void TiltLeft(float hitStrength)
+    private void TiltLeft()
     {
         if (rotating || (cooldownTimer > 0f && IsHammerTouching()))
         {
@@ -122,7 +122,7 @@ public class ArcadeTilt : MonoBehaviour
         }
     }
 
-    private void TiltRight(float hitStrength)
+    private void TiltRight()
     {
         if (rotating || (cooldownTimer > 0f && IsHammerTouching()))
         {

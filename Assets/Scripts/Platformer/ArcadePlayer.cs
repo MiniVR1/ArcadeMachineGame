@@ -173,7 +173,7 @@ public class ArcadePlayer : MonoBehaviour
     //     }
     // }
 
-    public void HammerLeft(float strength)
+    public void HammerLeft()
     {
         if (tiltState == TiltAmount.left)
         {
@@ -185,7 +185,7 @@ public class ArcadePlayer : MonoBehaviour
         }
     }
 
-    public void HammerRight(float strength)
+    public void HammerRight()
     {
         if (tiltState == TiltAmount.right)
         {
