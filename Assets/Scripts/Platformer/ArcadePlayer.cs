@@ -320,15 +320,16 @@ public class ArcadePlayer : MonoBehaviour
 
     private void Death()
     {
-        if (lives >= 0)
-        {
-            lives--;
-            Respawn();
-        }
-        else
-        {
-            GameOver();
-        }
+        // if (lives >= 0) -> Removed lives system 
+        // {
+        //     lives--;
+        //     Respawn();
+        // }
+        // else
+        // {
+        //     GameOver();
+        // }
+        Respawn();
         animator.SetTrigger("isDead");
         audioSource.PlayOneShot(deathSound);
     }
