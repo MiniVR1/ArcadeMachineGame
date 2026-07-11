@@ -3,21 +3,27 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
+    [SerializeField] private BoxCollider2D senseCollider;
+    [SerializeField] private BoxCollider2D collider;
     public TiltAmount tilt;
     public static event Action<TiltAmount, BoxCollider2D> collide;
 
-    private BoxCollider2D boxCollider;
+    private bool touching = false;
 
-    private void Awake()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        boxCollider = GetComponent<BoxCollider2D>();
+        if (other.CompareTag("Player") && !touching)
+        {
+            touching = true;
+            collide?.Invoke(tilt, collider);
+        }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            collide?.Invoke(tilt, boxCollider);
+            touching = false;
         }
     }
 }
