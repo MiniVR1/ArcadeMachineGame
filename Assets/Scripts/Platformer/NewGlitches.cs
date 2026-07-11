@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class NewGlitches : MonoBehaviour
 {
-    public bool glitchEnabled = true;
+    public bool glitchEnabled = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
-        BaseballHit.Instance.hitTop += ToggleGlitch;
-        glitchEnabled = !glitchEnabled; // swap modes so that initialisation sets it to the correct mode
-        ToggleGlitch(); // initialize the glitch in case the glitch starts disabled
+        // BaseballHit.Instance.hitTop += ToggleGlitch;
+        // glitchEnabled = !glitchEnabled; // swap modes so that initialisation sets it to the correct mode
+        // ToggleGlitch(); // initialize the glitch in case the glitch starts disabled
     }
 
     public void ToggleGlitch()
