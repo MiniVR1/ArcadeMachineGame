@@ -8,7 +8,7 @@ public class NewGlitchesManager2 : MonoBehaviour
     public NewGlitches[] level1Glitches;
     public NewGlitches[] level2Glitches;
     public NewGlitches[] level3Glitches;
-    public int glitchEnabled = 0; //Reset this to 0 when level up!
+    [HideInInspector]public int glitchEnabled = 0; //Reset this to 0 when level up!
 
   
 
