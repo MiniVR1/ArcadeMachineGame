@@ -26,7 +26,7 @@ public class TextButtonInteractions : MonoBehaviour, ISelectHandler, IDeselectHa
 
     public void OnSelect(BaseEventData eventData)
     {
-        // PLAY SFX HERE
+        SoundManager.instance.PlayUISound(SoundManager.instance.buttonSelectSfx);
         Debug.Log("selected");
         buttonText.text = ">" + enteredText + "<";
         animationCoroutine = StartCoroutine(AnimateLoadingText());
