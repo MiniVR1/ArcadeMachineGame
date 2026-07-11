@@ -5,11 +5,21 @@ public class GlitchZone : MonoBehaviour
 {
     public int zone;
 
-    List<Glitches> glitches = new List<Glitches>();
+    List<Glitches> glitches1 = new List<Glitches>();
+    List<Glitches> glitches2 = new List<Glitches>();
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        glitches.AddRange(gameObject.GetComponentsInChildren<Glitches>());
+        Glitches[] glitches = gameObject.GetComponentsInChildren<Glitches>();
+        for (int i = 0; i < glitches.Length; i += 2)
+        {
+            glitches1.Add(glitches[i]);
+        }
+        for (int i = 1; i < glitches.Length; i += 2)
+        {
+            glitches2.Add(glitches[i]);
+        }
     }
 
     // Update is called once per frame
@@ -25,15 +35,23 @@ public class GlitchZone : MonoBehaviour
 
     public void GlitchEnable(int zone)
     {
-        foreach (Glitches child in glitches)
+        foreach (Glitches child in glitches1)
         {
             child.EnableGlitch(zone);
+        }
+        foreach (Glitches child in glitches2)
+        {
+            child.DisableGlitch();
         }
     }
 
     public void GlitchDisable()
     {
-        foreach (Glitches child in glitches)
+        foreach (Glitches child in glitches2)
+        {
+            child.EnableGlitch(zone);
+        }
+        foreach (Glitches child in glitches1)
         {
             child.DisableGlitch();
         }
