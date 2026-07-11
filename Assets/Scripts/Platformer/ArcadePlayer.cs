@@ -51,6 +51,7 @@ public class ArcadePlayer : MonoBehaviour
 
     private HashSet<KeyType> keys = new();
     private Animator animator;
+    private SpriteRenderer spriteRenderer;
     private Vector2 rawInput;
     private float zeroInputTime;
     private const float inputBufferTime = 0.05f;
@@ -59,6 +60,7 @@ public class ArcadePlayer : MonoBehaviour
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         body = GetComponent<Rigidbody2D>();
         Physics2D.gravity = new Vector2(0f, -gravityMagnitude);
         collider = GetComponent<BoxCollider2D>();
@@ -91,6 +93,14 @@ public class ArcadePlayer : MonoBehaviour
             direction.x = rawInput.x;
         }
         animator.SetBool("isWalking", !Mathf.Approximately(direction.x, 0f));
+        if (Mathf.Approximately(direction.x, 1f))
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (Mathf.Approximately(direction.x, -1f))
+        {
+            spriteRenderer.flipX = false;
+        }
 
         if (!isPaused)
         {
@@ -316,6 +326,7 @@ public class ArcadePlayer : MonoBehaviour
             GameOver();
         }
         animator.SetTrigger("isDead");
+        audioSource.PlayOneShot(deathSound);
     }
 
     private void GameOver()
