@@ -1,3 +1,5 @@
+using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -13,6 +15,14 @@ public class LevelManager : MonoBehaviour
     public Vector3 menuLocation;
 
     public CurrentLevel level = CurrentLevel.Menu;
+    private Coroutine levelTransition;
+
+    [Header("UI Refenerces")]
+    public GameObject levelTransitionScreen;
+    public GameObject textObject;
+    public TextMeshProUGUI textContents;
+    public TextMeshProUGUI gameLevelText;
+
 
     void Start()
     {
@@ -27,22 +37,48 @@ public class LevelManager : MonoBehaviour
         Debug.Log("The next level is " + nextLevel);
         level = nextLevel;
 
+        levelTransition = StartCoroutine(LevelTransition(((int)nextLevel)));
+    }
+
+    public void StartGameLevel()
+    {
+        level = CurrentLevel.Level1;
+        levelTransition = StartCoroutine(LevelTransition(1));
+    }
+
+    private IEnumerator LevelTransition(int levelnum)
+    {
+        levelTransitionScreen.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+
+        textContents.text = $"LEVEL {levelnum} START";
+        textObject.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+
+
+
         if (level == CurrentLevel.Level1)
         {
+            gameLevelText.text = "LEVEL 1";
             player.transform.position = l1StartLoc;
         }
         else if (level == CurrentLevel.Level2)
         {
+            gameLevelText.text = "LEVEL 2";
             player.transform.position = l2StartLoc;
         }
         else if (level == CurrentLevel.Level3)
         {
+            gameLevelText.text = "LEVEL 3";
             player.transform.position = l3StartLoc;
         }
         else
         {
             player.transform.position = menuLocation;
         }
+
+        textObject.SetActive(false);
+        levelTransitionScreen.SetActive(false);
     }
 }
 
@@ -53,3 +89,4 @@ public enum CurrentLevel
     Level2,
     Level3
 }
+

@@ -12,7 +12,8 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance;
 
     [Header("UI SFX")]
-    public AudioClip uisfx;
+    public AudioClip buttonSelectSfx;
+    public AudioClip confirmSelectSfx;
 
     [Header("Music SFX")]
     public AudioClip musicsfx;
@@ -46,8 +47,8 @@ public class SoundManager : MonoBehaviour
     {
         masterVolume = level;
         audioMixer.SetFloat("Master", Mathf.Log10(level) * 20f);
-
         master_VolumeTxt.text = (Mathf.Round(level * 100)).ToString();
+        SoundManager.instance.PlayUISound(SoundManager.instance.buttonSelectSfx);
     }
 
     public void SetSFXVolume(float level)
@@ -55,6 +56,7 @@ public class SoundManager : MonoBehaviour
         sfxVolume = level;
         audioMixer.SetFloat("SFX", Mathf.Log10(level) * 20f);
         sfx_VolumeTxt.text = (Mathf.Round(level * 100)).ToString();
+        SoundManager.instance.PlayUISound(SoundManager.instance.buttonSelectSfx);
     }
 
     public void SetMusicVolume(float level)
@@ -62,6 +64,7 @@ public class SoundManager : MonoBehaviour
         bgmVolume = level;
         audioMixer.SetFloat("Music", Mathf.Log10(level) * 20f);
         music_VolumeTxt.text = (Mathf.Round(level * 100)).ToString();
+        SoundManager.instance.PlayUISound(SoundManager.instance.buttonSelectSfx);
     }
 
     private void Awake()
