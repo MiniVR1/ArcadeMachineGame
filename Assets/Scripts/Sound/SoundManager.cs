@@ -53,7 +53,7 @@ public class SoundManager : MonoBehaviour
     public void SetSFXVolume(float level)
     {
         sfxVolume = level;
-        audioMixer.SetFloat("Sfx", Mathf.Log10(level) * 20f);
+        audioMixer.SetFloat("SFX", Mathf.Log10(level) * 20f);
         sfx_VolumeTxt.text = (Mathf.Round(level * 100)).ToString();
     }
 
@@ -70,6 +70,13 @@ public class SoundManager : MonoBehaviour
             instance = this;
         else
             Debug.Log("More than one SoundManager instance in scene!");
+    }
+
+    private void Start()
+    {
+        audioMixer.SetFloat("Master", Mathf.Log10(0.5f) * 20f);
+        audioMixer.SetFloat("SFX", Mathf.Log10(0.5f) * 20f);
+        audioMixer.SetFloat("Music", Mathf.Log10(0.5f) * 20f);
     }
 }
 
