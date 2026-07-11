@@ -9,6 +9,7 @@ public class OutOfOrderFlip : InteractableObject
     public override void OnInteract()
     {
         animator.Play("Flip");
+        SoundManager.instance.PlayUISound(SoundManager.instance.paperSfx);
         director.enabled = true;
     }
 }

@@ -340,6 +340,8 @@ MonoBehaviour:
   audioMixer: {fileID: 24100000, guid: 18cb3e73e9fe74f4986a1c564c6bce55, type: 2}
   buttonSelectSfx: {fileID: 8300000, guid: e06c11b0bcab198479a2bf928b9ae900, type: 3}
   confirmSelectSfx: {fileID: 8300000, guid: 379bf1fb4c9c6524a97da2f907ca1724, type: 3}
+  paperSfx: {fileID: 8300000, guid: 6bcd28fc5a556cf4fbebe3db38c4d2e2, type: 3}
+  selectRealityButtonSfx: {fileID: 8300000, guid: 95b359a2ad68fb9438cf9c9c3b36db2c, type: 3}
   musicsfx: {fileID: 0}
   SFXSoundSource: {fileID: 1810572770308684711}
   master_VolumeTxt: {fileID: 0}

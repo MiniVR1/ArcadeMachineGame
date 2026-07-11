@@ -13,6 +13,7 @@ public class SwitchCam : MonoBehaviour
 
     public void SwitchToCamera(int cameraPos)
     {
+        SoundManager.instance.PlayUISound(SoundManager.instance.selectRealityButtonSfx);
         StopAllCoroutines();
         StartCoroutine(ZoomToPosition(cameraPositions[cameraPos].position, cameraPositions[cameraPos].rotation));
         interactionManager.enabled = true;

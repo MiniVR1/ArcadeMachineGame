@@ -31,6 +31,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3973433281556764614}
   - {fileID: 1319138271900063378}
   - {fileID: 911728359261853688}
   - {fileID: 734915219070750977}
@@ -117,6 +118,7 @@ GameObject:
   - component: {fileID: 7855830585959839416}
   - component: {fileID: 6839946077601921522}
   - component: {fileID: 1130152459379298775}
+  - component: {fileID: 2100380339482117189}
   m_Layer: 0
   m_Name: Start_Game
   m_TagString: Untagged
@@ -165,7 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.43529415, g: 0.23529413, b: 0.18823531, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -238,6 +240,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2100380339482117189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2537290129639568607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Outline
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.74509805}
+  m_EffectDistance: {x: 5, y: -5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &3827189167235049150
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,7 +272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1319138271900063378
 RectTransform:
   m_ObjectHideFlags: 0
@@ -387,8 +404,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4286588452
+  m_fontColor: {r: 0.14117648, g: 0.14901961, b: 0.5019608, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -516,7 +533,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &911728359261853688
 RectTransform:
   m_ObjectHideFlags: 0
@@ -636,3 +653,78 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1001 &3507954435149705261
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 430295779608209925}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: ae1314be13be5974cb02b0f7e29637ff, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.23698033
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ae1314be13be5974cb02b0f7e29637ff, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.23698033
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ae1314be13be5974cb02b0f7e29637ff, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.23698033
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ae1314be13be5974cb02b0f7e29637ff, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -962.711
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ae1314be13be5974cb02b0f7e29637ff, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -538.93
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ae1314be13be5974cb02b0f7e29637ff, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.711
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ae1314be13be5974cb02b0f7e29637ff, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.04070401
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ae1314be13be5974cb02b0f7e29637ff, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.04070401
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ae1314be13be5974cb02b0f7e29637ff, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7059343
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ae1314be13be5974cb02b0f7e29637ff, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7059343
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ae1314be13be5974cb02b0f7e29637ff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ae1314be13be5974cb02b0f7e29637ff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -173.4
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: ae1314be13be5974cb02b0f7e29637ff, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ae1314be13be5974cb02b0f7e29637ff, type: 3}
+      propertyPath: m_Name
+      value: Bro, Can you Work _!
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 65702495048144492, guid: ae1314be13be5974cb02b0f7e29637ff, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ae1314be13be5974cb02b0f7e29637ff, type: 3}
+--- !u!4 &3973433281556764614 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ae1314be13be5974cb02b0f7e29637ff, type: 3}
+  m_PrefabInstance: {fileID: 3507954435149705261}
+  m_PrefabAsset: {fileID: 0}
