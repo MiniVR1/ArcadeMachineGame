@@ -20,7 +20,7 @@ public class ArcadePlayer : MonoBehaviour
     [SerializeField] private float moveSpeed = 5.0f;
     [SerializeField] private float jumpHeight = 3.0f;
     [SerializeField] private float superJumpHeightScale = 2f;
-    [SerializeField] private float slideSpeed = 100f;
+    // [SerializeField] private float slideSpeed = 100f;
 
     [Header("Tilt")]
     [SerializeField] private static float tiltAngle = 10f;
@@ -152,6 +152,7 @@ public class ArcadePlayer : MonoBehaviour
         respawn.action.started += RespawnDebug;
         Killzone.entered += OnPlayerKilled;
         Key.grabbed += OnKeyGrabbed;
+        Platform.collide += OnPlatformCollide;
     }
 
     public void OnJump()
@@ -217,6 +218,7 @@ public class ArcadePlayer : MonoBehaviour
         respawn.action.started -= RespawnDebug;
         Killzone.entered -= OnPlayerKilled;
         Key.grabbed -= OnKeyGrabbed;
+        Platform.collide += OnPlatformCollide;
     }
 
     // private void OnCollisionEnter2D(Collision2D collision)
@@ -263,7 +265,6 @@ public class ArcadePlayer : MonoBehaviour
         camera.transform.rotation = Quaternion.Euler(leftCameraTilt);
         tiltState = TiltAmount.left;
         Physics2D.gravity = Quaternion.Euler(0f, 0f, tiltAngle) * Physics2D.gravity;
-        Physics2D.gravity = new Vector2(Physics2D.gravity.x * slideSpeed, Physics2D.gravity.y);
     }
 
     public void RightTilt()
@@ -271,7 +272,6 @@ public class ArcadePlayer : MonoBehaviour
         camera.transform.rotation = Quaternion.Euler(rightCameraTilt);
         tiltState = TiltAmount.right;
         Physics2D.gravity = Quaternion.Euler(0f, 0f, -tiltAngle) * Physics2D.gravity;
-        Physics2D.gravity = new Vector2(Physics2D.gravity.x * slideSpeed, Physics2D.gravity.y);
     }
 
     public void DefaultTilt()
@@ -301,6 +301,11 @@ public class ArcadePlayer : MonoBehaviour
         {
             keys.Add(key.type);
         }
+    }
+
+    private void OnPlatformCollide(TiltAmount tilt, BoxCollider2D collider)
+    {
+        collider.enabled = tilt == tiltState;
     }
 
     private void RespawnDebug(InputAction.CallbackContext context)

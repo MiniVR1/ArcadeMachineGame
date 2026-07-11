@@ -16,18 +16,18 @@ public class PlatformTiltManager : MonoBehaviour
 
     void Start()
     {
-        if (tiltState == TiltAmount.left)
-        {
-            transform.rotation = Quaternion.Euler(leftTilt);
-        }
-        else if (tiltState == TiltAmount.right)
-        {
-            transform.rotation = Quaternion.Euler(rightTilt);
-        }
-        else
-        {
-            transform.rotation = Quaternion.Euler(noTilt);
-        }
+        // if (tiltState == TiltAmount.left)
+        // {
+        //     transform.rotation = Quaternion.Euler(leftTilt);
+        // }
+        // else if (tiltState == TiltAmount.right)
+        // {
+        //     transform.rotation = Quaternion.Euler(rightTilt);
+        // }
+        // else
+        // {
+        //     transform.rotation = Quaternion.Euler(noTilt);
+        // }
 
         playerScript = (ArcadePlayer)Player.GetComponent(typeof(ArcadePlayer));
         collider = GetComponent<BoxCollider2D>();
@@ -40,8 +40,8 @@ public class PlatformTiltManager : MonoBehaviour
             if (playerScript.tiltState == tiltState)
             {
                 collider.enabled = true;
-                Player.transform.SetParent(transform);
-                Player.transform.rotation = transform.rotation;
+                // Player.transform.SetParent(transform);
+                // Player.transform.rotation = transform.rotation;
             }
             else
             {
