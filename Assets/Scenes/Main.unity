@@ -1230,7 +1230,7 @@ MonoBehaviour:
   game_UI: {fileID: 493620854}
   outOfOrder: {fileID: 493620853}
   switchcam: {fileID: 167494772}
-  enableUI: 1
+  enableUI: 0
 --- !u!1001 &393837780
 PrefabInstance:
   m_ObjectHideFlags: 0
