@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class NewGlitches : MonoBehaviour
 {
+    public CurrentLevel level;
     public bool glitchEnabled = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

@@ -3,18 +3,29 @@ using System.Collections.Generic;
 
 public class NewGlitchesManager : MonoBehaviour
 {
+    public LevelManager levelManager;
+
     List<NewGlitches> glitches1 = new List<NewGlitches>();
     List<NewGlitches> glitches2 = new List<NewGlitches>();
 
     void Start()
     {
         NewGlitches[] glitches = Object.FindObjectsByType<NewGlitches>();
+        List<NewGlitches> filteredGlitches = new List<NewGlitches>();
+        foreach (var glitch in glitches)
+        {
+            if (glitch.level == levelManager.level)
+            {
+                filteredGlitches.Add(glitch);
+            }
+        }
+        Debug.Log(filteredGlitches.Count);
 
-        for (int i = 0; i < glitches.Length; i += 2)
+        for (int i = 0; i < filteredGlitches.Count; i += 2)
         {
             glitches1.Add(glitches[i]);
         }
-        for (int i = 1; i < glitches.Length; i += 2)
+        for (int i = 1; i < filteredGlitches.Count; i += 2)
         {
             glitches2.Add(glitches[i]);
         }
