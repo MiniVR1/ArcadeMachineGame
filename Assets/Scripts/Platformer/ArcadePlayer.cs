@@ -105,8 +105,7 @@ public class ArcadePlayer : MonoBehaviour
         if (!isPaused)
         {
             float targetVelocityX = -direction.x * moveSpeed;
-            float velocityChangeX = targetVelocityX - body.linearVelocityX;
-            body.AddForce(new Vector2(velocityChangeX * body.mass, 0f), ForceMode2D.Impulse);
+            body.linearVelocity = new Vector2(targetVelocityX, body.linearVelocity.y);
         }
     }
 
