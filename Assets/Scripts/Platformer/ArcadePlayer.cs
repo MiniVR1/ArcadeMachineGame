@@ -62,7 +62,7 @@ public class ArcadePlayer : MonoBehaviour
         lives = 3; // Connect to a game manager
 
         // Temp Setting for when UI is found and active - Evan
-        if (uiReference != null)
+        if (uiReference != null && UI_Manager.instance.enableUI)
         {
             isPaused = true;
         }
