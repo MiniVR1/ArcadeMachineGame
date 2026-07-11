@@ -1524,6 +1524,10 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8256449691812446143, guid: 7c25932dac03c49b986ebf637df337b4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.17
+      objectReference: {fileID: 0}
     - target: {fileID: 8631217990101912351, guid: 7c25932dac03c49b986ebf637df337b4, type: 3}
       propertyPath: Player
       value: 
@@ -4600,8 +4604,11 @@ MonoBehaviour:
   confirmSelectSfx: {fileID: 0}
   paperSfx: {fileID: 0}
   selectRealityButtonSfx: {fileID: 0}
-  musicsfx: {fileID: 0}
   SFXSoundSource: {fileID: 1406678522}
+  MainMenuMusiceSource: {fileID: 0}
+  Level1MusicSource: {fileID: 0}
+  Level2MusicSource: {fileID: 0}
+  Level3MusicSource: {fileID: 0}
   master_VolumeTxt: {fileID: 0}
   sfx_VolumeTxt: {fileID: 0}
   music_VolumeTxt: {fileID: 0}
