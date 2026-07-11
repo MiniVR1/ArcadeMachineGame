@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class NewGlitchesManager2 : MonoBehaviour
 {
+    // THIS CODE HAS BEEN MADE OBSOLETE BY NEWGLITCHES.CS
+    /*
     public LevelManager levelManager;
     [Header("Glitch Refs")]
     public NewGlitches[] level1Glitches;
@@ -43,5 +45,6 @@ public class NewGlitchesManager2 : MonoBehaviour
 
         }
     }
+    */
 
 }

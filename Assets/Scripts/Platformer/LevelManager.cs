@@ -23,6 +23,17 @@ public class LevelManager : MonoBehaviour
     public TextMeshProUGUI textContents;
     public TextMeshProUGUI gameLevelText;
 
+    private static LevelManager instance;
+    public static LevelManager Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = GameObject.FindAnyObjectByType<LevelManager>();
+            return instance;
+        }
+    }
+
 
     void Start()
     {

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 public class NewGlitchesManager : MonoBehaviour
 {
+    // THIS CODE HAS BEEN MADE OBSOLETE BY NEWGLITCHES.CS
+    /*
     public LevelManager levelManager;
 
     List<NewGlitches> glitches1 = new List<NewGlitches>();
@@ -51,4 +53,5 @@ public class NewGlitchesManager : MonoBehaviour
             glitch.ToggleGlitch();
         }
     }
+    */
 }

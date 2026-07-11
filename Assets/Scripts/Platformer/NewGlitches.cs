@@ -9,13 +9,16 @@ public class NewGlitches : MonoBehaviour
     void Awake()
     {
         // BaseballHit.Instance.hitTop += ToggleGlitch;
-        glitchEnabled = !glitchEnabled; // swap modes so that initialisation sets it to the correct mode
-        ToggleGlitch(); // initialize the glitch in case the glitch starts disabled
+        // swap modes so that initialisation sets it to the correct mode
+        gameObject.SetActive(glitchEnabled); // initialize the glitch in case the glitch starts disabled
     }
 
     public void ToggleGlitch()
     {
-        glitchEnabled = !glitchEnabled;
-        gameObject.SetActive(glitchEnabled);
+        if (LevelManager.Instance.level == level)
+        {
+            glitchEnabled = !glitchEnabled;
+            gameObject.SetActive(glitchEnabled);
+        }
     }
 }

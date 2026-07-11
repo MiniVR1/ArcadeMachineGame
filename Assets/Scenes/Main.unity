@@ -1288,75 +1288,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4586313796436757990, guid: bd253dd5613ce4d0a92523d9eba81a4e, type: 3}
   m_PrefabInstance: {fileID: 238813593}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &239068007
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 239068008}
-  - component: {fileID: 239068010}
-  - component: {fileID: 239068009}
-  m_Layer: 0
-  m_Name: GlitchManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &239068008
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 239068007}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -24.182503, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1293228905}
-  - {fileID: 1992954194}
-  - {fileID: 635878430}
-  m_Father: {fileID: 890180125}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &239068009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 239068007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 624e1bd0665e64e0f9f2c26305070f3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NewGlitchesManager2
-  levelManager: {fileID: 1234348894}
-  level1Glitches: []
-  level2Glitches:
-  - {fileID: 635878431}
-  - {fileID: 1293228906}
-  - {fileID: 1992954195}
-  level3Glitches: []
-  glitchEnabled: 0
---- !u!114 &239068010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 239068007}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2191bf6df13a1bf47adaea32c62e2e45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NewGlitchesManager
-  levelManager: {fileID: 1234348894}
 --- !u!1 &239979905
 GameObject:
   m_ObjectHideFlags: 0
@@ -5415,11 +5346,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 239068008}
+    m_TransformParent: {fileID: 890180125}
     m_Modifications:
     - target: {fileID: 6055385369505720502, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -44.137497
+      value: -68.32
       objectReference: {fileID: 0}
     - target: {fileID: 6055385369505720502, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5475,17 +5406,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6055385369505720502, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
   m_PrefabInstance: {fileID: 635878429}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &635878431 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8922052496043921143, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
-  m_PrefabInstance: {fileID: 635878429}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c514d588696aefe47ae3cb075a34ae18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NewGlitches
 --- !u!4 &642455240 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4500011292642886882, guid: 9e6404e8fcf3c4b469bb958ac677b637, type: 3}
@@ -9648,9 +9568,15 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5518192928684981340, guid: 4542fdd9af2ec2b4dbdda4f469468e42, type: 3}
       insertIndex: 1
-      addedObject: {fileID: 239068008}
+      addedObject: {fileID: 1293228905}
+    - targetCorrespondingSourceObject: {fileID: 5518192928684981340, guid: 4542fdd9af2ec2b4dbdda4f469468e42, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 1992954194}
     - targetCorrespondingSourceObject: {fileID: 5518192928684981340, guid: 4542fdd9af2ec2b4dbdda4f469468e42, type: 3}
       insertIndex: 3
+      addedObject: {fileID: 635878430}
+    - targetCorrespondingSourceObject: {fileID: 5518192928684981340, guid: 4542fdd9af2ec2b4dbdda4f469468e42, type: 3}
+      insertIndex: 5
       addedObject: {fileID: 901456249}
     - targetCorrespondingSourceObject: {fileID: 5518192928684981340, guid: 4542fdd9af2ec2b4dbdda4f469468e42, type: 3}
       insertIndex: -1
@@ -9853,11 +9779,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 239068008}
+    m_TransformParent: {fileID: 890180125}
     m_Modifications:
     - target: {fileID: 6055385369505720502, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -40.137497
+      value: -64.32
       objectReference: {fileID: 0}
     - target: {fileID: 6055385369505720502, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9913,17 +9839,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6055385369505720502, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
   m_PrefabInstance: {fileID: 1293228904}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1293228906 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8922052496043921143, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
-  m_PrefabInstance: {fileID: 1293228904}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c514d588696aefe47ae3cb075a34ae18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NewGlitches
 --- !u!1001 &1295472758
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14072,7 +13987,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 239068008}
+    m_TransformParent: {fileID: 890180125}
     m_Modifications:
     - target: {fileID: 6055385369505720502, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
       propertyPath: m_LocalScale.x
@@ -14084,7 +13999,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6055385369505720502, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -76.0125
+      value: -100.195
       objectReference: {fileID: 0}
     - target: {fileID: 6055385369505720502, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14140,17 +14055,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6055385369505720502, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
   m_PrefabInstance: {fileID: 1992954193}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1992954195 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8922052496043921143, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
-  m_PrefabInstance: {fileID: 1992954193}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c514d588696aefe47ae3cb075a34ae18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NewGlitches
 --- !u!1 &2025270702
 GameObject:
   m_ObjectHideFlags: 0

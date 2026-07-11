@@ -27,7 +27,7 @@ public class InteractionManager : MonoBehaviour
                     interactable = NewItem.current;
                 }
 
-                Cursor.SetCursor(grabCursor, Vector2.zero, CursorMode.Auto);
+                Cursor.SetCursor(grabCursor, Vector2.zero, CursorMode.ForceSoftware);
                 hoveringInteractable = true;
 
                 if (Mouse.current.leftButton.wasPressedThisFrame)
