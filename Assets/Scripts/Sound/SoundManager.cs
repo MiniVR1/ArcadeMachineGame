@@ -14,6 +14,8 @@ public class SoundManager : MonoBehaviour
     [Header("UI SFX")]
     public AudioClip buttonSelectSfx;
     public AudioClip confirmSelectSfx;
+    public AudioClip paperSfx;
+    public AudioClip selectRealityButtonSfx;
 
     [Header("Music SFX")]
     public AudioClip musicsfx;

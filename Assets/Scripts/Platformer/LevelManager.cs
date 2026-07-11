@@ -48,37 +48,59 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator LevelTransition(int levelnum)
     {
-        levelTransitionScreen.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
-
-        textContents.text = $"LEVEL {levelnum} START";
-        textObject.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
-
-
-
-        if (level == CurrentLevel.Level1)
+        if (UI_Manager.instance.enableUI)
         {
-            gameLevelText.text = "LEVEL 1";
-            player.transform.position = l1StartLoc;
-        }
-        else if (level == CurrentLevel.Level2)
-        {
-            gameLevelText.text = "LEVEL 2";
-            player.transform.position = l2StartLoc;
-        }
-        else if (level == CurrentLevel.Level3)
-        {
-            gameLevelText.text = "LEVEL 3";
-            player.transform.position = l3StartLoc;
+            levelTransitionScreen.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+
+            textContents.text = $"LEVEL {levelnum} START";
+            textObject.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+
+            if (level == CurrentLevel.Level1)
+            {
+                gameLevelText.text = "LEVEL 1";
+                player.transform.position = l1StartLoc;
+            }
+            else if (level == CurrentLevel.Level2)
+            {
+                gameLevelText.text = "LEVEL 2";
+                player.transform.position = l2StartLoc;
+            }
+            else if (level == CurrentLevel.Level3)
+            {
+                gameLevelText.text = "LEVEL 3";
+                player.transform.position = l3StartLoc;
+            }
+            else
+            {
+                player.transform.position = menuLocation;
+            }
+
+            textObject.SetActive(false);
+            levelTransitionScreen.SetActive(false);
         }
         else
         {
-            player.transform.position = menuLocation;
+            if (level == CurrentLevel.Level1)
+            {
+                player.transform.position = l1StartLoc;
+            }
+            else if (level == CurrentLevel.Level2)
+            {
+                player.transform.position = l2StartLoc;
+            }
+            else if (level == CurrentLevel.Level3)
+            {
+                player.transform.position = l3StartLoc;
+            }
+            else
+            {
+                player.transform.position = menuLocation;
+            }
         }
 
-        textObject.SetActive(false);
-        levelTransitionScreen.SetActive(false);
+
     }
 }
 
