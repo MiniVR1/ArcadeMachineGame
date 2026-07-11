@@ -12,14 +12,21 @@ public class TextButtonInteractions : MonoBehaviour, ISelectHandler, IDeselectHa
     private Coroutine animationCoroutine;
 
 
-    void Start()
+    void Awake()
     {
         enteredText = buttonText.text;
+    }
+
+    void OnEnable()
+    {
+        buttonText.text = enteredText;
+        buttonText.alpha = 255;
     }
 
 
     public void OnSelect(BaseEventData eventData)
     {
+        // PLAY SFX HERE
         Debug.Log("selected");
         buttonText.text = ">" + enteredText + "<";
         animationCoroutine = StartCoroutine(AnimateLoadingText());

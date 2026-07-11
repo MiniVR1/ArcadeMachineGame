@@ -1226,6 +1226,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba71952cb331b0c41bb03652bef2a9cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI_Manager
+  reality_UI: {fileID: 1635126143}
+  game_UI: {fileID: 493620854}
+  outOfOrder: {fileID: 493620853}
+  switchcam: {fileID: 167494772}
+  enableUI: 1
 --- !u!1001 &393837780
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2118,6 +2123,16 @@ PrefabInstance:
 --- !u!4 &493620852 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4735914500860766681, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
+  m_PrefabInstance: {fileID: 493620851}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &493620853 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4613860510034903455, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
+  m_PrefabInstance: {fileID: 493620851}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &493620854 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1714332038372211894, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
   m_PrefabInstance: {fileID: 493620851}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &494925308
@@ -5825,6 +5840,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cafba3e5462666e428d3fe761bcbb887, type: 3}
+--- !u!1 &1635126143 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7804356185129693066, guid: cafba3e5462666e428d3fe761bcbb887, type: 3}
+  m_PrefabInstance: {fileID: 1635126142}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1698822333
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6180,7 +6200,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2921974568709984066, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
   m_PrefabInstance: {fileID: 493620851}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 493620854}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2ea59275efdfa04089085dc469123a1, type: 3}
