@@ -20,7 +20,7 @@ public class SliderInteraction : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     public void OnSelect(BaseEventData eventData)
     {
-        // PLAY SFX HERE
+        SoundManager.instance.PlayUISound(SoundManager.instance.buttonSelectSfx);
         Debug.Log("selected Slider");
         animationCoroutine = StartCoroutine(AnimateLoadingText());
     }

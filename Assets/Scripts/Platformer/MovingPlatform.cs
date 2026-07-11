@@ -1,10 +1,13 @@
+using System;
+using System.Diagnostics;
 using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
     [SerializeField] private float direction = 1.0f; 
-    [SerializeField] private float moveSpeed = 5.0f; 
-
+    [SerializeField] private float moveSpeed = 5.0f;
+    public enum MovePlatformType { Vertical, Horizontal };
+    public MovePlatformType movePlatformType;
     private Vector3 position;
 
     public GameObject Player; 
@@ -22,8 +25,17 @@ public class MovingPlatform : MonoBehaviour
     }
 
     private void Move(){
-        position.x += direction * moveSpeed * Time.deltaTime;
-        transform.position = position;
+        switch(movePlatformType)
+        {
+            case MovePlatformType.Horizontal:
+                position.x += direction * moveSpeed * Time.deltaTime;
+                transform.position = position;
+                break;
+            case MovePlatformType.Vertical:
+                position.y += direction * moveSpeed * Time.deltaTime;
+                transform.position = position;
+                break;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other){

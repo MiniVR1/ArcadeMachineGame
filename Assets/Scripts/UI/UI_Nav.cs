@@ -10,6 +10,8 @@ public class UI_Nav : MonoBehaviour
     public GameObject optionsMenu;
     public GameObject escapeMenu;
     public GameObject StartingScreen;
+    public GameObject gameScreen;
+    public GameObject backgroundScreen;
 
     [Header("Setup")]
     public Selectable startButton;
@@ -21,10 +23,17 @@ public class UI_Nav : MonoBehaviour
     [SerializeField] private EventSystem eventSystem;
     public bool isInStartMenu = true;
     public ArcadePlayer gamePlayer;
+    public LevelManager levelManager;
+    public Door doorlevel;
 
     public void StartGame()
     {
+        SoundManager.instance.PlayUISound(SoundManager.instance.confirmSelectSfx);
         startMenu.SetActive(false);
+        doorlevel.level = CurrentLevel.Level1;
+        levelManager.StartGameLevel();
+        backgroundScreen.SetActive(false);
+        gameScreen.SetActive(true);
         gamePlayer.isPaused = false;
         isInStartMenu = false;
     }
@@ -45,6 +54,7 @@ public class UI_Nav : MonoBehaviour
 
     public void OpenOptions()
     {
+        SoundManager.instance.PlayUISound(SoundManager.instance.confirmSelectSfx);
         if (isInStartMenu)
         {
             startMenu.SetActive(false);
@@ -83,14 +93,19 @@ public class UI_Nav : MonoBehaviour
 
     public void CloseEscapeMenu()
     {
+        SoundManager.instance.PlayUISound(SoundManager.instance.confirmSelectSfx);
         escapeMenu.SetActive(false);
         gamePlayer.isPaused = false;
+        eventSystem.SetSelectedGameObject(null);
     }
 
     public void OpenStartMenu()
     {
+        SoundManager.instance.PlayUISound(SoundManager.instance.confirmSelectSfx);
         isInStartMenu = true;
         escapeMenu.SetActive(false);
+        gameScreen.SetActive(false);
+        backgroundScreen.SetActive(true);
         startMenu.SetActive(true);
         JumpToElement(startButton);
     }
