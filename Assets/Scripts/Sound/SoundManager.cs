@@ -17,12 +17,13 @@ public class SoundManager : MonoBehaviour
     public AudioClip paperSfx;
     public AudioClip selectRealityButtonSfx;
 
-    [Header("Music SFX")]
-    public AudioClip musicsfx;
-
     [Header("Audio Sources")]
     public AudioSource SFXSoundSource;
-    
+    public GameObject MainMenuMusiceSource;
+    public GameObject Level1MusicSource;
+    public GameObject Level2MusicSource;
+    public GameObject Level3MusicSource;
+
     [Header("Internal Values")]
     private float masterVolume = 1f; // We store this so when we unmute it goes to the set value intended by the player
     private float sfxVolume = 1f;

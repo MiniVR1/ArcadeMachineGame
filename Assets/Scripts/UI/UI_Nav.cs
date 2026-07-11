@@ -102,6 +102,10 @@ public class UI_Nav : MonoBehaviour
     public void OpenStartMenu()
     {
         SoundManager.instance.PlayUISound(SoundManager.instance.confirmSelectSfx);
+        SoundManager.instance.Level1MusicSource.SetActive(false);
+        SoundManager.instance.Level2MusicSource.SetActive(false);
+        SoundManager.instance.Level3MusicSource.SetActive(false);
+        SoundManager.instance.MainMenuMusiceSource.SetActive(true);
         isInStartMenu = true;
         escapeMenu.SetActive(false);
         gameScreen.SetActive(false);
@@ -113,6 +117,7 @@ public class UI_Nav : MonoBehaviour
     public void StopAnimation()
     {
         StartingScreen.SetActive(false);
+        SoundManager.instance.MainMenuMusiceSource.SetActive(true);
         JumpToElement(startButton);
     }
 
