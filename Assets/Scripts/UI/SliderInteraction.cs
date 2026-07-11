@@ -2,51 +2,43 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 
-public class TextButtonInteractions : MonoBehaviour, ISelectHandler, IDeselectHandler
+public class SliderInteraction : MonoBehaviour, ISelectHandler, IDeselectHandler
 {
-    public TextMeshProUGUI buttonText;
-    public string enteredText;
+    public Image handle;
+    private Color colorFade = Color.white;
+    private Color colorNonFade = Color.white;
 
     private Coroutine animationCoroutine;
 
-
-    void Awake()
+    private void Start()
     {
-        enteredText = buttonText.text;
+        colorFade.a = 0.25f;
     }
-
-    void OnEnable()
-    {
-        buttonText.text = enteredText;
-        buttonText.alpha = 1f;
-    }
-
 
     public void OnSelect(BaseEventData eventData)
     {
         // PLAY SFX HERE
-        Debug.Log("selected");
-        buttonText.text = ">" + enteredText + "<";
+        Debug.Log("selected Slider");
         animationCoroutine = StartCoroutine(AnimateLoadingText());
     }
     public void OnDeselect(BaseEventData eventData)
     {
-        Debug.Log("de-selected");
-        buttonText.text = enteredText;
+        Debug.Log("de-selected Slider");
         StopCoroutine(animationCoroutine);
-        buttonText.alpha = 1;
+        handle.color = colorNonFade;
     }
 
     private IEnumerator AnimateLoadingText()
     {
         while (true)
         {
-            buttonText.alpha = 1f;
+            handle.color = colorNonFade;
             yield return new WaitForSeconds(0.5f);
 
-            buttonText.alpha = 0.2f;
+            handle.color = colorFade;
             yield return new WaitForSeconds(0.5f);
         }
     }
