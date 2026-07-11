@@ -5030,6 +5030,7 @@ MonoBehaviour:
   - {fileID: 1834582554}
   level3Glitches: []
   glitchEnabled: 0
+  allGlitchDisabled: 0
 --- !u!1001 &995316700
 PrefabInstance:
   m_ObjectHideFlags: 0
