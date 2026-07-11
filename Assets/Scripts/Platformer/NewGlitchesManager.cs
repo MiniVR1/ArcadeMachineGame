@@ -8,7 +8,7 @@ public class NewGlitchesManager : MonoBehaviour
 
     void Start()
     {
-        NewGlitches[] glitches = GetComponents<NewGlitches>();
+        NewGlitches[] glitches = Object.FindObjectsByType<NewGlitches>();
 
         for (int i = 0; i < glitches.Length; i += 2)
         {
@@ -27,11 +27,6 @@ public class NewGlitchesManager : MonoBehaviour
     void OnEnable()
     {
         BaseballHit.Instance.hitTop += ToggleGlitch;
-    }
-
-    void OnDisable()
-    {
-        BaseballHit.Instance.hitTop -= ToggleGlitch;
     }
 
     void ToggleGlitch()
