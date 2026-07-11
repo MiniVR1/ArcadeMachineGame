@@ -31,25 +31,24 @@ public class ArcadePlayer : MonoBehaviour
 
     public bool isPaused; // Making this public so I can manipulate this from the UI_Nav - Evan
 
-    // public InputActionReference tiltLeft;
-    // public InputActionReference tiltRight;
-    // public InputActionReference tiltReset;
     public InputActionReference respawn;
 
     RaycastHit jumpCast;
 
-    [SerializeField] private bool canJump = true;
     private bool superJumpBuff = false;
 
     public TiltAmount tiltState = TiltAmount.none;
 
     private HashSet<KeyType> keys = new();
     private Animator animator;
+    private Vector2 rawInput;
+    private float zeroInputTime;
+    private const float inputBufferTime = 0.05f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         body = GetComponent<Rigidbody2D>();
         Physics2D.gravity = new Vector2(0f, -gravityMagnitude);
         collider = GetComponent<BoxCollider2D>();
@@ -70,6 +69,19 @@ public class ArcadePlayer : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (Mathf.Approximately(rawInput.x, 0f))
+        {
+            if (Time.time - zeroInputTime >= inputBufferTime)
+            {
+                direction.x = 0f;
+            }
+        }
+        else
+        {
+            direction.x = rawInput.x;
+        }
+        animator.SetBool("isWalking", !Mathf.Approximately(direction.x, 0f));
+
         if (!isPaused)
         {
             float targetVelocityX = -direction.x * moveSpeed;
@@ -80,7 +92,12 @@ public class ArcadePlayer : MonoBehaviour
 
     public void OnMove(InputValue value)
     {
-        direction.x = value.Get<float>();
+        Vector2 freshInput = value.Get<Vector2>();
+        if (Mathf.Approximately(freshInput.x, 0f) && !Mathf.Approximately(rawInput.x, 0f))
+        {
+            zeroInputTime = Time.time;
+        }
+        rawInput = freshInput;
     }
 
     public bool HasKey(KeyType key)
@@ -129,10 +146,7 @@ public class ArcadePlayer : MonoBehaviour
                 superJumpBuff = false;
             }
             body.linearVelocityY += newJumpHeight;
-        }
-        else
-        {
-            Debug.Log("Can't Jump!");
+            animator.SetTrigger("isJumping");
         }
     }
 
@@ -162,7 +176,7 @@ public class ArcadePlayer : MonoBehaviour
             }
         }
 
-        Debug.Log("Cheese");
+        // Debug.Log("Cheese");
     }
 
     private void OnDisable()
@@ -237,7 +251,6 @@ public class ArcadePlayer : MonoBehaviour
     // NOTE: sets one super jump for player
     private void BuffJump()
     {
-        Debug.Log("buffed jump");
         superJumpBuff = true;
     }
 
@@ -278,6 +291,7 @@ public class ArcadePlayer : MonoBehaviour
         {
             GameOver();
         }
+        animator.SetTrigger("isDead");
     }
 
     private void GameOver()

@@ -45,8 +45,8 @@
                 {
                     "name": "Move",
                     "type": "Value",
-                    "id": "f67d3827-dd79-4184-bea1-a225a56de999",
-                    "expectedControlType": "Axis",
+                    "id": "d7b9e69c-92cd-4af3-91b9-503dd8ad2651",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -98,9 +98,9 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "1D Axis",
-                    "id": "bb34a762-ee30-4ba2-ad3f-bddc9d64b597",
-                    "path": "1DAxis",
+                    "name": "2D Vector",
+                    "id": "4143111b-1282-4a8a-a1bf-5898cafdefbe",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -109,8 +109,8 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "negative",
-                    "id": "9f839d26-ef54-4405-a250-7c1f9ca584fc",
+                    "name": "left",
+                    "id": "f99783ae-845c-48e3-9f6b-9e2074f58c8f",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
@@ -120,8 +120,8 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "positive",
-                    "id": "01acc138-6b2b-40db-90ea-c283b22aff25",
+                    "name": "right",
+                    "id": "f0f90e0a-d6d6-4c1a-b527-05dd7feb7107",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
