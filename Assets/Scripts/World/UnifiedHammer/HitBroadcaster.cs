@@ -5,6 +5,7 @@ public class HitBroadcaster : MonoBehaviour
 {
     public float lockedTime = 0.2f;
     private bool itemLocked = false;
+    private AudioSource source;
 
     public delegate void HasHit();
 
@@ -17,10 +18,15 @@ public class HitBroadcaster : MonoBehaviour
     public HasHit hitConsole;
     public HasHit hitJumpButton;
 
+    void Awake()
+    {
+        source = GetComponent<AudioSource>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!itemLocked)
-            // Debug.Log(other.gameObject.name);
+        {
             switch (other.gameObject.name) // call the right delegate based on which hitbox was collided with
             {
                 case "LeftSide":
@@ -49,6 +55,7 @@ public class HitBroadcaster : MonoBehaviour
                         break;
                     }
             }
+        }
     }
 
     private IEnumerator CallItemHit(HasHit list)
@@ -58,6 +65,10 @@ public class HitBroadcaster : MonoBehaviour
             list();
         // then leave the item locked until the lockedTime expires
         yield return new WaitForSeconds(lockedTime);
+        if (!source.isPlaying)
+        {
+            source.Play();
+        }
         itemLocked = false;
     }
 

@@ -1,10 +1,8 @@
-using System.Collections;
 using UnityEngine;
 
 public class BaseballHit : HitBroadcaster
 {
     private static BaseballHit instance;
-
     public static BaseballHit Instance
     {
         get

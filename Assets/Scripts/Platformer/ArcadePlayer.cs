@@ -10,20 +10,30 @@ public class ArcadePlayer : MonoBehaviour
     public Camera camera;
     public UI_Nav uiReference;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip normalJumpSound;
+    [SerializeField] private AudioClip superJumpSound;
+    [SerializeField] private AudioClip deathSound;
+
+    [Header("Mechanics")]
     [SerializeField] private float moveSpeed = 5.0f;
     [SerializeField] private float jumpHeight = 3.0f;
     [SerializeField] private float superJumpHeightScale = 2f;
     [SerializeField] private float slideSpeed = 100f;
-    private float raycastDistance;
 
-    private int lives;
-
-    private Vector2 direction = Vector2.zero;
+    [Header("Tilt")]
     [SerializeField] private static float tiltAngle = 10f;
     [SerializeField] private float gravityMagnitude = 9.81f;
     [SerializeField] private Vector3 leftCameraTilt = new Vector3(0f, 180f, -tiltAngle);
     [SerializeField] private Vector3 rightCameraTilt = new Vector3(0f, 180f, tiltAngle);
     [SerializeField] private Vector3 defaultCameraTilt = new Vector3(0f, 180f, 0f);
+
+    private float raycastDistance;
+
+    private int lives;
+
+    private Vector2 direction = Vector2.zero;
     private Vector3 castOffset;
     private Vector3 currentTilt;
     private Vector3 initialPosition;
@@ -140,11 +150,25 @@ public class ArcadePlayer : MonoBehaviour
         if ((IsGroundedCentre() || IsGroundedRight() || IsGroundedLeft()) && !isPaused)
         {
             float newJumpHeight = jumpHeight;
+
             if (superJumpBuff)
             {
                 newJumpHeight *= superJumpHeightScale;
                 superJumpBuff = false;
+
+                if (audioSource != null && superJumpSound != null)
+                {
+                    audioSource.PlayOneShot(superJumpSound);
+                }
             }
+            else
+            {
+                if (audioSource != null && normalJumpSound != null)
+                {
+                    audioSource.PlayOneShot(normalJumpSound);
+                }
+            }
+
             body.linearVelocityY += newJumpHeight;
             animator.SetTrigger("isJumping");
         }
