@@ -103,10 +103,21 @@ public class ArcadePlayer : MonoBehaviour
             spriteRenderer.flipX = false;
         }
 
+        // if (!isPaused)
+        // {
+        //     float targetVelocityX = -direction.x * moveSpeed;
+        //     body.linearVelocity = new Vector2(targetVelocityX, body.linearVelocity.y);
+        // }
         if (!isPaused)
         {
             float targetVelocityX = -direction.x * moveSpeed;
-            body.linearVelocity = new Vector2(targetVelocityX, body.linearVelocity.y);
+            float targetVelocityY = body.linearVelocity.y;
+            if (Mathf.Approximately(direction.x, 0f) && (IsGroundedCentre() || IsGroundedRight() || IsGroundedLeft()))
+            {
+                targetVelocityY = 0f;
+            }
+
+            body.linearVelocity = new Vector2(targetVelocityX, targetVelocityY);
         }
     }
 
