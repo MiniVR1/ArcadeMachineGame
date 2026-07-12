@@ -12,6 +12,10 @@ public class ZoomIn : InteractableObject
     public override void OnInteract()
     {
         zoomedIn = !zoomedIn;
+        if (zoomedIn)
+            cursorType = cursorType.zoomOut;
+        else 
+            cursorType = cursorType.zoomIn;
         if (coroutine != null)
         {
             StopCoroutine(coroutine);

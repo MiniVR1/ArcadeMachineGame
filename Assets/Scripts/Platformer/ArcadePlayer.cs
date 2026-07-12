@@ -9,6 +9,8 @@ public class ArcadePlayer : MonoBehaviour
 
     public Camera camera;
     public UI_Nav uiReference;
+    public GameObject joystickAnimator;
+    public Animator buttonAnimator;
 
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
@@ -130,6 +132,7 @@ public class ArcadePlayer : MonoBehaviour
             zeroInputTime = Time.time;
         }
         rawInput = freshInput;
+        joystickAnimator.transform.localRotation = Quaternion.Euler(freshInput.x * 10, 0, -20);
     }
 
     public bool HasKey(KeyType key)
@@ -195,6 +198,8 @@ public class ArcadePlayer : MonoBehaviour
             body.linearVelocityY += newJumpHeight;
             toJump = true;
             animator.SetTrigger("isJumping");
+            Debug.Log("Brain aneurism");
+            buttonAnimator.SetTrigger("ButtonPush");
         }
     }
 

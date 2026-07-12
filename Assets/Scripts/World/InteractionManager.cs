@@ -5,6 +5,9 @@ using System.Linq;
 public class InteractionManager : MonoBehaviour
 {
     public Texture2D grabCursor;
+    public Texture2D HitCursor;
+    public Texture2D ZoomInCursor;
+    public Texture2D ZoomOutCursor;
 
     void Update()
     {
@@ -27,7 +30,7 @@ public class InteractionManager : MonoBehaviour
                     interactable = NewItem.current;
                 }
 
-                Cursor.SetCursor(grabCursor, Vector2.zero, CursorMode.ForceSoftware);
+                Cursor.SetCursor(CursorLookup(interactable.cursorType), Vector2.zero, CursorMode.ForceSoftware);
                 hoveringInteractable = true;
 
                 if (Mouse.current.leftButton.wasPressedThisFrame)
@@ -65,4 +68,28 @@ public class InteractionManager : MonoBehaviour
             }
         }
     }
+
+    private Texture2D CursorLookup(cursorType type)
+    {
+        switch (type)
+        {
+            case cursorType.grab:
+                return grabCursor;
+            case cursorType.hit:
+                return HitCursor;
+            case cursorType.zoomIn:
+                return ZoomInCursor;
+            case cursorType.zoomOut:
+                return ZoomOutCursor;
+            default: return null;
+        }
+    }
+}
+
+public enum cursorType
+{
+    grab,
+    hit,
+    zoomIn,
+    zoomOut
 }
