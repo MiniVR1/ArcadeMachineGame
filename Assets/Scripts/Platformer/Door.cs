@@ -8,6 +8,7 @@ public class Door : MonoBehaviour
 
     public GameObject player;
     public GameObject levelManager;
+    public GameObject endingScene;
 
     public CurrentLevel level;
     int levelCount;
@@ -50,7 +51,8 @@ public class Door : MonoBehaviour
             }
             else
             {
-                Debug.Log("Reached Final Level");
+                endingScene.SetActive(true);
+                Debug.Log("Reached Final Level"); // ACTIVATE END ANIMATION FROM HERE!
             }
 
         }

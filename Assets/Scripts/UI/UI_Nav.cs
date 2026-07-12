@@ -1,5 +1,7 @@
+using Unity.VectorGraphics;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UI_Nav : MonoBehaviour
@@ -119,6 +121,12 @@ public class UI_Nav : MonoBehaviour
         StartingScreen.SetActive(false);
         SoundManager.instance.MainMenuMusiceSource.SetActive(true);
         JumpToElement(startButton);
+    }
+
+    public void RestartGame()
+    {
+        Debug.Log("RESTARTING");
+        SceneManager.LoadScene(0);
     }
 
     public void JumpToElement(Selectable selectedObject)
