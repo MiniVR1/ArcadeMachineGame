@@ -16,7 +16,6 @@ public class HitBroadcaster : MonoBehaviour
     public HasHit hitRight;
     public HasHit hitTop;
     public HasHit hitConsole;
-    public HasHit hitJumpButton;
 
     void Awake()
     {
@@ -47,11 +46,6 @@ public class HitBroadcaster : MonoBehaviour
                 case "MainConsole":
                     {
                         StartCoroutine(CallItemHit(hitConsole));
-                        break;
-                    }
-                case "JumpButton":
-                    {
-                        StartCoroutine(CallItemHit(hitJumpButton));
                         break;
                     }
             }

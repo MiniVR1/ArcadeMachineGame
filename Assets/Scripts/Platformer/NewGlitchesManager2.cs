@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEngine;
 
 public class NewGlitchesManager2 : MonoBehaviour
@@ -12,7 +11,7 @@ public class NewGlitchesManager2 : MonoBehaviour
     public NewGlitches[] level3Glitches;
     [HideInInspector]public int glitchEnabled = 0; //Reset this to 0 when level up!
 
-  
+
 
     void OnEnable()
     {
@@ -34,7 +33,7 @@ public class NewGlitchesManager2 : MonoBehaviour
                 break;
         }
     }
-    
+
     void CycleGlitch(NewGlitches[] GlitchArray)
     {
         GlitchArray[glitchEnabled].ToggleGlitch();

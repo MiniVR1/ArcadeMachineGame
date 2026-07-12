@@ -148,7 +148,7 @@ public class ArcadePlayer : MonoBehaviour
     {
         HammerHit.Instance.hitLeft += HammerLeft;
         HammerHit.Instance.hitRight += HammerRight;
-        BaseballHit.Instance.hitJumpButton += BuffJump;
+        JumpButton.Instance.jumpButtonPressed += BuffJump;
         respawn.action.started += RespawnDebug;
         Killzone.entered += OnPlayerKilled;
         Key.grabbed += OnKeyGrabbed;
@@ -218,7 +218,7 @@ public class ArcadePlayer : MonoBehaviour
         respawn.action.started -= RespawnDebug;
         Killzone.entered -= OnPlayerKilled;
         Key.grabbed -= OnKeyGrabbed;
-        Platform.collide += OnPlatformCollide;
+        Platform.collide -= OnPlatformCollide;
     }
 
     // private void OnCollisionEnter2D(Collision2D collision)

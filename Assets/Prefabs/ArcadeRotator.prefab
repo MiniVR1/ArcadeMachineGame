@@ -7643,6 +7643,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -2509773974612881408, guid: b09fc5d152a8198498c9fc62744a3021, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1156362766504782570}
+    - targetCorrespondingSourceObject: {fileID: -2509773974612881408, guid: b09fc5d152a8198498c9fc62744a3021, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1890700828119603932}
+    - targetCorrespondingSourceObject: {fileID: -2509773974612881408, guid: b09fc5d152a8198498c9fc62744a3021, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8614151245739927831}
   m_SourcePrefab: {fileID: 100100000, guid: b09fc5d152a8198498c9fc62744a3021, type: 3}
 --- !u!4 &1522934975427322330 stripped
 Transform:
@@ -7690,6 +7696,39 @@ MonoBehaviour:
   blinkSpeed: 2.5
   minIntensity: 0.2
   maxIntensity: 0.5
+--- !u!114 &1890700828119603932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5729504420254553649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b8983313246e4a4794fd7cc5694c143, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JumpButton
+--- !u!65 &8614151245739927831
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5729504420254553649}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0016956175, y: 0.0018743371, z: 0.0009340288}
+  m_Center: {x: 0.012641786, y: -0.0025108056, z: 0.019330863}
 --- !u!1001 &3903373701531188068
 PrefabInstance:
   m_ObjectHideFlags: 0
