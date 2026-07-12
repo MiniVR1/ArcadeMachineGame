@@ -349,6 +349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MovingPlatform
   direction: 1
   moveSpeed: 2
+  movePlatformType: 0
   Player: {fileID: 6128422381711078178}
 --- !u!1 &1367821241075748480
 GameObject:
@@ -1150,6 +1151,10 @@ MonoBehaviour:
   l3StartLoc: {x: 0, y: 0, z: 0}
   menuLocation: {x: 0, y: 0, z: 0}
   level: 1
+  levelTransitionScreen: {fileID: 0}
+  textObject: {fileID: 0}
+  textContents: {fileID: 0}
+  gameLevelText: {fileID: 0}
 --- !u!1 &4236195459469372934
 GameObject:
   m_ObjectHideFlags: 0
@@ -2187,7 +2192,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.03080636, y: -0.06468809}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2197,7 +2202,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.99999994, y: 0.99999994}
+  m_Size: {x: 0.5732623, y: 0.8804178}
   m_EdgeRadius: 0
 --- !u!114 &9116821610773696857
 MonoBehaviour:
@@ -2243,23 +2248,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ArcadePlayer
   camera: {fileID: 8638975936111007473}
   uiReference: {fileID: 0}
+  audioSource: {fileID: 0}
+  normalJumpSound: {fileID: 0}
+  superJumpSound: {fileID: 0}
+  deathSound: {fileID: 0}
   moveSpeed: 5
   jumpHeight: 3
-  slideSpeed: 100
-  tiltAngle: 10
+  superJumpHeightScale: 2
   gravityMagnitude: 9.81
   leftCameraTilt: {x: 0, y: 180, z: -10}
   rightCameraTilt: {x: 0, y: 180, z: 10}
   defaultCameraTilt: {x: 0, y: 180, z: 0}
   isPaused: 0
-  move: {fileID: -4574680043286130804, guid: 3b4b16ba8c9af48f198d1b930cb6694e, type: 3}
-  jump: {fileID: 3874535947816775757, guid: 3b4b16ba8c9af48f198d1b930cb6694e, type: 3}
-  tiltLeft: {fileID: 510522003452572228, guid: 3b4b16ba8c9af48f198d1b930cb6694e, type: 3}
-  tiltRight: {fileID: -7700381525307741439, guid: 3b4b16ba8c9af48f198d1b930cb6694e, type: 3}
-  tiltReset: {fileID: -7247615866045321184, guid: 3b4b16ba8c9af48f198d1b930cb6694e, type: 3}
   respawn: {fileID: -1769718680629080896, guid: 3b4b16ba8c9af48f198d1b930cb6694e, type: 3}
-  pause: {fileID: -3200350938741951452, guid: 3b4b16ba8c9af48f198d1b930cb6694e, type: 3}
-  canJump: 1
   tiltState: 1
 --- !u!1 &6807983634280233173
 GameObject:
@@ -2564,6 +2565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d371e41b123e44afb3c8e08e10d9795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelTransition
+  requiredKeys: 
   player: {fileID: 6128422381711078178}
   levelManager: {fileID: 3893545076009085247}
   level: 1
