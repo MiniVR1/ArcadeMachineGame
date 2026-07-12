@@ -51,6 +51,7 @@ public class Door : MonoBehaviour
             }
             else
             {
+                SoundManager.instance.Level3MusicSource.SetActive(false);
                 endingScene.SetActive(true);
                 Debug.Log("Reached Final Level"); // ACTIVATE END ANIMATION FROM HERE!
             }

@@ -27354,6 +27354,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Handlers
       objectReference: {fileID: 0}
+    - target: {fileID: 5746816189684806800, guid: 88f1a96a3bd924a47b3dbfdf2f804de6, type: 3}
+      propertyPath: m_Volume
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 5864788528863878033, guid: 88f1a96a3bd924a47b3dbfdf2f804de6, type: 3}
       propertyPath: sfx_Volume
       value: 
@@ -27382,6 +27386,10 @@ PrefabInstance:
       propertyPath: master_VolumeTxt
       value: 
       objectReference: {fileID: 1004697581}
+    - target: {fileID: 6530782104093313457, guid: 88f1a96a3bd924a47b3dbfdf2f804de6, type: 3}
+      propertyPath: m_Volume
+      value: 0.65
+      objectReference: {fileID: 0}
     - target: {fileID: 6707291122373898486, guid: 88f1a96a3bd924a47b3dbfdf2f804de6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.44142
@@ -27421,6 +27429,14 @@ PrefabInstance:
     - target: {fileID: 6707291122373898486, guid: 88f1a96a3bd924a47b3dbfdf2f804de6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7365161866913580715, guid: 88f1a96a3bd924a47b3dbfdf2f804de6, type: 3}
+      propertyPath: m_Volume
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 7843943425330497651, guid: 88f1a96a3bd924a47b3dbfdf2f804de6, type: 3}
+      propertyPath: m_Volume
+      value: 0.65
       objectReference: {fileID: 0}
     - target: {fileID: 8887037784179797865, guid: 88f1a96a3bd924a47b3dbfdf2f804de6, type: 3}
       propertyPath: game_UI
