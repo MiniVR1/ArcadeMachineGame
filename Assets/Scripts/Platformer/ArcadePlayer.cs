@@ -14,6 +14,7 @@ public class ArcadePlayer : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip normalJumpSound;
     [SerializeField] private AudioClip superJumpSound;
+    [SerializeField] private AudioClip superJumpBuffSound;
     [SerializeField] private AudioClip deathSound;
 
     [Header("Mechanics")]
@@ -285,6 +286,7 @@ public class ArcadePlayer : MonoBehaviour
     private void BuffJump()
     {
         superJumpBuff = true;
+        audioSource.PlayOneShot(superJumpBuffSound);
     }
 
     private void OnPlayerKilled(GameObject player)
