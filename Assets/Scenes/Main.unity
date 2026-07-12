@@ -5788,6 +5788,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Pivot
       objectReference: {fileID: 0}
+    - target: {fileID: 2780400696722460211, guid: 04f2006354e105f48b06a5c24965a266, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4596036527072431701, guid: 04f2006354e105f48b06a5c24965a266, type: 3}
       propertyPath: m_Name
       value: Baseball
