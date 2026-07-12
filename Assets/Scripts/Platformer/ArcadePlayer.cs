@@ -47,6 +47,7 @@ public class ArcadePlayer : MonoBehaviour
     RaycastHit jumpCast;
 
     private bool superJumpBuff = false;
+    private bool toJump = false;
 
     public TiltAmount tiltState = TiltAmount.none;
 
@@ -106,22 +107,19 @@ public class ArcadePlayer : MonoBehaviour
         if (!isPaused)
         {
             float targetVelocityX = -direction.x * moveSpeed;
-            body.linearVelocity = new Vector2(targetVelocityX, body.linearVelocity.y);
+            float targetVelocityY = body.linearVelocity.y;
+
+            if (toJump && targetVelocityY < 0f)
+            {
+                toJump = false;
+            }
+            if (!toJump && Mathf.Approximately(direction.x, 0f) && (IsGroundedCentre() || IsGroundedRight() || IsGroundedLeft()))
+            {
+                targetVelocityY = 0f;
+            }
+
+            body.linearVelocity = new Vector2(targetVelocityX, targetVelocityY);
         }
-        // if (!isPaused)
-        // {
-        //     float targetVelocityX = -direction.x * moveSpeed;
-        //     float targetVelocityY = body.linearVelocity.y;
-
-        //     // Only kill vertical velocity if the player isn't actively moving upward (like from a jump)
-        //     if (Mathf.Approximately(direction.x, 0f) && targetVelocityY <= 0.01f && (IsGroundedCentre() || IsGroundedRight() || IsGroundedLeft()))
-        //     {
-        //         targetVelocityY = 0f;
-        //     }
-
-        //     body.linearVelocity = new Vector2(targetVelocityX, targetVelocityY);
-        //     Debug.Log(body.linearVelocity);
-        // }
     }
 
     public void OnMove(InputValue value)
@@ -195,6 +193,7 @@ public class ArcadePlayer : MonoBehaviour
             }
 
             body.linearVelocityY += newJumpHeight;
+            toJump = true;
             animator.SetTrigger("isJumping");
         }
     }
