@@ -8346,6 +8346,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.19
       objectReference: {fileID: 0}
+    - target: {fileID: 4683181258375974707, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 644445750}
+    - target: {fileID: 4683181258375974707, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetMusicVolume
+      objectReference: {fileID: 0}
     - target: {fileID: 4735914500860766681, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -8390,6 +8398,14 @@ PrefabInstance:
       propertyPath: eventSystem
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6033467708985087277, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 644445750}
+    - target: {fileID: 6033467708985087277, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetSFXVolume
+      objectReference: {fileID: 0}
     - target: {fileID: 7785509249917667909, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -8409,6 +8425,14 @@ PrefabInstance:
     - target: {fileID: 8565453942735129163, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8788930986621005963, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 644445750}
+    - target: {fileID: 8788930986621005963, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetMasterVolume
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11406,6 +11430,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4500011292642886882, guid: 9e6404e8fcf3c4b469bb958ac677b637, type: 3}
   m_PrefabInstance: {fileID: 2026226491}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &644445750 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5864788528863878033, guid: 88f1a96a3bd924a47b3dbfdf2f804de6, type: 3}
+  m_PrefabInstance: {fileID: 1492434759}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ead87cc17e1141c483b039847001706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
 --- !u!1001 &647258133
 PrefabInstance:
   m_ObjectHideFlags: 0

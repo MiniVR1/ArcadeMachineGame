@@ -299,7 +299,9 @@ public class ArcadePlayer : MonoBehaviour
     private void BuffJump()
     {
         superJumpBuff = true;
-        audioSource.PlayOneShot(superJumpBuffSound);
+
+        if (!audioSource.isPlaying)
+            audioSource.PlayOneShot(superJumpBuffSound);
     }
 
     private void OnPlayerKilled(GameObject player)
