@@ -1953,7 +1953,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Platform
   senseCollider: {fileID: 1512644555817466785}
   collider: {fileID: 7959237809531187140}
-  tilt: 2
+  tilt: 0
 --- !u!61 &1512644555817466785
 BoxCollider2D:
   m_ObjectHideFlags: 0
