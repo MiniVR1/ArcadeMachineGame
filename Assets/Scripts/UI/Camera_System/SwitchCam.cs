@@ -9,6 +9,7 @@ public class SwitchCam : MonoBehaviour
     private Vector3 cameraStartPos;
     private Vector3 cameraRotation;
     public GameObject canvasObject;
+    public GameObject gameLogo;
     public InteractionManager interactionManager;
 
     public void SwitchToCamera(int cameraPos)
@@ -18,6 +19,7 @@ public class SwitchCam : MonoBehaviour
         StartCoroutine(ZoomToPosition(cameraPositions[cameraPos].position, cameraPositions[cameraPos].rotation));
         interactionManager.enabled = true;
         canvasObject.SetActive(false);
+        gameLogo.SetActive(false);
     }
 
     private IEnumerator ZoomToPosition(Vector3 position, Vector3 rotation)
