@@ -8,7 +8,7 @@ public class NewGlitches : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        // BaseballHit.Instance.hitTop += ToggleGlitch;
+        BaseballHit.Instance.hitTop += ToggleGlitch;
         // swap modes so that initialisation sets it to the correct mode
         gameObject.SetActive(glitchEnabled); // initialize the glitch in case the glitch starts disabled
     }

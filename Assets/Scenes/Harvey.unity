@@ -334,7 +334,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 309452920}
-  - {fileID: 975362072}
+  - {fileID: 22082428}
+  - {fileID: 1834582552}
+  - {fileID: 1982660758}
   - {fileID: 1702781646}
   - {fileID: 176014941}
   - {fileID: 2096987502}
@@ -4968,75 +4970,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b8195f4170330546baaf8069972955e, type: 3}
---- !u!1 &975362071
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 975362072}
-  - component: {fileID: 975362073}
-  - component: {fileID: 975362074}
-  m_Layer: 0
-  m_Name: GlitchManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &975362072
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 975362071}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 36.177498, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 22082428}
-  - {fileID: 1834582552}
-  - {fileID: 1982660758}
-  m_Father: {fileID: 100823393}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &975362073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 975362071}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2191bf6df13a1bf47adaea32c62e2e45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NewGlitchesManager
-  levelManager: {fileID: 2096987501}
---- !u!114 &975362074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 975362071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 624e1bd0665e64e0f9f2c26305070f3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NewGlitchesManager2
-  levelManager: {fileID: 2096987501}
-  level1Glitches: []
-  level2Glitches:
-  - {fileID: 1982660760}
-  - {fileID: 1440378486}
-  - {fileID: 1834582554}
-  level3Glitches: []
-  glitchEnabled: 0
 --- !u!1001 &995316700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6866,11 +6799,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 975362072}
+    m_TransformParent: {fileID: 100823393}
     m_Modifications:
     - target: {fileID: 6055385369505720502, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -40.137497
+      value: -3.959999
       objectReference: {fileID: 0}
     - target: {fileID: 6055385369505720502, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6914,7 +6847,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8922052496043921143, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
       propertyPath: level
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8085,17 +8018,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
---- !u!114 &1440378486 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8922052496043921143, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
-  m_PrefabInstance: {fileID: 1364667097}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c514d588696aefe47ae3cb075a34ae18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NewGlitches
 --- !u!4 &1459558842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 142450391383778348, guid: d82812fd71adf71439065c3b17e960f3, type: 3}
@@ -8107,11 +8029,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 975362072}
+    m_TransformParent: {fileID: 100823393}
     m_Modifications:
     - target: {fileID: 6055385369505720502, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -44.137497
+      value: -7.959999
       objectReference: {fileID: 0}
     - target: {fileID: 6055385369505720502, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8155,7 +8077,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8922052496043921143, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
       propertyPath: level
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10057,7 +9979,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 975362072}
+    m_TransformParent: {fileID: 100823393}
     m_Modifications:
     - target: {fileID: 6055385369505720502, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
       propertyPath: m_LocalScale.x
@@ -10069,7 +9991,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6055385369505720502, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -76.0125
+      value: -39.835
       objectReference: {fileID: 0}
     - target: {fileID: 6055385369505720502, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10113,7 +10035,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8922052496043921143, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
       propertyPath: level
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10125,17 +10047,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6055385369505720502, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
   m_PrefabInstance: {fileID: 1834582551}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1834582554 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8922052496043921143, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
-  m_PrefabInstance: {fileID: 1834582551}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c514d588696aefe47ae3cb075a34ae18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NewGlitches
 --- !u!1001 &1865014897
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11006,17 +10917,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6055385369505720502, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
   m_PrefabInstance: {fileID: 1470801062}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1982660760 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8922052496043921143, guid: d5b67e667e342bf45a73efb73cef2edf, type: 3}
-  m_PrefabInstance: {fileID: 1470801062}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c514d588696aefe47ae3cb075a34ae18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NewGlitches
 --- !u!1 &1985242747
 GameObject:
   m_ObjectHideFlags: 0
