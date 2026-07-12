@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
@@ -6,6 +7,7 @@ public class CheckPoint : MonoBehaviour
 
     public Material activeMaterial;
     public Material deactiveMaterial;
+    public SpriteRenderer flagSprite;
 
     MeshRenderer mesh;
     CheckPointManager manager;
@@ -29,6 +31,11 @@ public class CheckPoint : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             manager.CheckForActive(this);
+            if(flagSprite != null)
+            {
+                flagSprite.GetComponent<SpriteRenderer>().color = new Color(255, 0, 0);
+                SoundManager.instance.PlayUISound(SoundManager.instance.passCheckpoint);
+            }
         }
     }
 

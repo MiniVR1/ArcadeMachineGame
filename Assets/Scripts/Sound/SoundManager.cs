@@ -10,6 +10,8 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private AudioMixer audioMixer;
 
     public static SoundManager instance;
+    [Header("Platformer Sounds")]
+    public AudioClip passCheckpoint;
 
     [Header("UI SFX")]
     public AudioClip buttonSelectSfx;
