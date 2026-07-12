@@ -7640,6 +7640,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b09fc5d152a8198498c9fc62744a3021, type: 3}
       insertIndex: -1
       addedObject: {fileID: 761461247822078426}
+    - targetCorrespondingSourceObject: {fileID: -2509773974612881408, guid: b09fc5d152a8198498c9fc62744a3021, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1156362766504782570}
   m_SourcePrefab: {fileID: 100100000, guid: b09fc5d152a8198498c9fc62744a3021, type: 3}
 --- !u!4 &1522934975427322330 stripped
 Transform:
@@ -7666,6 +7669,27 @@ MonoBehaviour:
   tiltLeft: -10
   tiltRight: 10
   animationTime: 0.05
+--- !u!1 &5729504420254553649 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2509773974612881408, guid: b09fc5d152a8198498c9fc62744a3021, type: 3}
+  m_PrefabInstance: {fileID: 1344381903572059697}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1156362766504782570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5729504420254553649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5203fe426222280419da57b1778ba99c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonGlow
+  glowColor: {r: 0.8352942, g: 0.35686275, b: 0.20392159, a: 1}
+  blinkSpeed: 2.5
+  minIntensity: 0.2
+  maxIntensity: 0.5
 --- !u!1001 &3903373701531188068
 PrefabInstance:
   m_ObjectHideFlags: 0
