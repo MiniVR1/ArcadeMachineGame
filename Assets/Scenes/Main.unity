@@ -9027,7 +9027,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5002827112752817209, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5146581044679850504, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
       propertyPath: eventSystem
@@ -29911,6 +29911,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 167494772}
+    - target: {fileID: 1442325863734600227, guid: cafba3e5462666e428d3fe761bcbb887, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2600594066364936057, guid: cafba3e5462666e428d3fe761bcbb887, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.55673
@@ -29959,6 +29963,10 @@ PrefabInstance:
       propertyPath: elementToSelect
       value: 
       objectReference: {fileID: 1442666802}
+    - target: {fileID: 6721034552334554983, guid: cafba3e5462666e428d3fe761bcbb887, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7804356185129693066, guid: cafba3e5462666e428d3fe761bcbb887, type: 3}
       propertyPath: m_Name
       value: Reality_UI
