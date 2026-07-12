@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class JumpButton : InteractableObject
 {
-    [SerializeField] private AudioSource audioSource;
     private static JumpButton instance;
 
     public static JumpButton Instance
