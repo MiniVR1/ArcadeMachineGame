@@ -4022,6 +4022,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 756822413}
     m_Modifications:
+    - target: {fileID: 969097796527531684, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 969097796527531684, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 969097796527531684, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.44
+      objectReference: {fileID: 0}
     - target: {fileID: 1104726548416309382, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
       propertyPath: m_Name
       value: ArcadeRotator
@@ -4082,6 +4094,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4043285522429532398, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.19
+      objectReference: {fileID: 0}
     - target: {fileID: 4735914500860766681, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4140,6 +4156,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7785509249917667909, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8565453942735129163, guid: e1914341cea357f4ca0921be1bc6ef56, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
