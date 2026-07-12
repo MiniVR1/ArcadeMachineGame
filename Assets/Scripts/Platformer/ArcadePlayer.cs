@@ -103,22 +103,25 @@ public class ArcadePlayer : MonoBehaviour
             spriteRenderer.flipX = false;
         }
 
-        // if (!isPaused)
-        // {
-        //     float targetVelocityX = -direction.x * moveSpeed;
-        //     body.linearVelocity = new Vector2(targetVelocityX, body.linearVelocity.y);
-        // }
         if (!isPaused)
         {
             float targetVelocityX = -direction.x * moveSpeed;
-            float targetVelocityY = body.linearVelocity.y;
-            if (Mathf.Approximately(direction.x, 0f) && (IsGroundedCentre() || IsGroundedRight() || IsGroundedLeft()))
-            {
-                targetVelocityY = 0f;
-            }
-
-            body.linearVelocity = new Vector2(targetVelocityX, targetVelocityY);
+            body.linearVelocity = new Vector2(targetVelocityX, body.linearVelocity.y);
         }
+        // if (!isPaused)
+        // {
+        //     float targetVelocityX = -direction.x * moveSpeed;
+        //     float targetVelocityY = body.linearVelocity.y;
+
+        //     // Only kill vertical velocity if the player isn't actively moving upward (like from a jump)
+        //     if (Mathf.Approximately(direction.x, 0f) && targetVelocityY <= 0.01f && (IsGroundedCentre() || IsGroundedRight() || IsGroundedLeft()))
+        //     {
+        //         targetVelocityY = 0f;
+        //     }
+
+        //     body.linearVelocity = new Vector2(targetVelocityX, targetVelocityY);
+        //     Debug.Log(body.linearVelocity);
+        // }
     }
 
     public void OnMove(InputValue value)
