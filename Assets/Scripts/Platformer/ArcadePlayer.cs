@@ -31,7 +31,7 @@ public class ArcadePlayer : MonoBehaviour
 
     private float raycastDistance;
 
-    private int lives;
+    // private int lives;
 
     private Vector2 direction = Vector2.zero;
     private Vector3 castOffset;
@@ -70,7 +70,7 @@ public class ArcadePlayer : MonoBehaviour
         raycastDistance = collider.bounds.extents.y + 0.1f;
         isPaused = false;
 
-        lives = 3; // Connect to a game manager
+        // lives = 3; // Connect to a game manager
 
         // Temp Setting for when UI is found and active - Evan
         if (uiReference != null && UI_Manager.instance.enableUI)
@@ -320,7 +320,7 @@ public class ArcadePlayer : MonoBehaviour
 
     private void Death()
     {
-        // if (lives >= 0) -> Removed lives system 
+        // if (lives >= 0) -> Removed lives system
         // {
         //     lives--;
         //     Respawn();

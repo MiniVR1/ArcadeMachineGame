@@ -54,7 +54,7 @@ public class NewItem : InteractableObject
         colliders = GetComponentsInChildren<Collider>();
     }
 
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         CheckMouse();
         if (state != State.Idle)
